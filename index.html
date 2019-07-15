@@ -303,7 +303,7 @@
             <h2 id="7-10"><a href="#7-10" class="headerlink" title="7.10"></a>7.10</h2><blockquote>
 <p>敏感的人仿佛比一般人多了很多触手-他们有丰富的器官可以感知周围的信息，察觉他人的情感，但同时，他们也容易插手别人的间隙，做出不必要的思考与行动。换句话说，容易让别人觉得麻烦。</p>
 </blockquote>
-<h2 id="7-12"><a href="#7-12" class="headerlink" title="7.12"></a>7.12</h2><p>今天和学姐吃饭，听了一些关于性别认知障碍的事情，晚上就梦见小霜变成4号床舍友了，早上还给我做早饭吃，感觉自己就要弯了。正打算在梦里把这事儿给学姐说，突然梦就醒了。往床下看了看发现4号床室友已经在光着膀子打游戏了，凸。残念だ。</p>
+<h2 id="7-12"><a href="#7-12" class="headerlink" title="7.12"></a>7.12</h2><p>今天和yz吃饭，听了一些关于性别认知障碍的事情，晚上就梦见xs变成4号床舍友了，早上还给我做早饭吃，感觉自己就要弯了。正打算在梦里把这事儿给yz说，突然梦就醒了。往床下看了看发现4号床室友已经在光着膀子打游戏了，凸。残念だ。</p>
 <h2 id="7-13"><a href="#7-13" class="headerlink" title="7.13"></a>7.13</h2><blockquote>
 <p>当你急着奔向未来的时候，说明你已经不喜欢现在了。</p>
 <p>舞动人生-正因为把模糊而微弱的光打向人生整体，所以才能够看到过去和未来。但是，如果把强烈的聚光灯对准“此时此刻”，那就会既看不到过去，也看不到未来                                                          —《被讨厌的勇气》</p>
@@ -430,18 +430,37 @@
             <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>（这四个字仿佛对我很有吸引力）</p>
 <p>起因是读硕找导师，导师说给我整理些资料看看，整理了两天（还是被我催了一次）后发给我这篇SIGCOMM 2019的论文，标题是《TeaVaR: Striking the Right Utilization-Availability Balance in<br>WAN Traﬀic Engineering》，总之先试着读读看吧。</p>
 <p>（对了，当时和导师面谈的时候导师问我网安为什么只拿了个B，我就实话全说了-室友抄我的，所以丢了20分，而最关键的是当时这门课的老师就和我隔了一个工位远hhh 人生真是充满戏剧性）</p>
-<h1 id="有的没的"><a href="#有的没的" class="headerlink" title="有的没的"></a>有的没的</h1><h2 id="introduce"><a href="#introduce" class="headerlink" title="introduce"></a>introduce</h2><p>FFC是啥…，多条线路的低利用性使得发生故障的时候重路由来维持稳定？<br>VaR(x)和CVaR(x)的概念？主要没看懂这个图什么意思…（横轴是loss，纵轴是概率？）<br>​    $VaR_{\beta}(x)$ 代表给出$x$，有$\beta$的概率使得loss在$VaR_{\beta}(x)$以下</p>
-<p>​    $CVaR_{\beta}(x)$ 则是说loss高于$VaR_{\beta}(x)$的情况下的期望loss，可以用来衡量代价吧？<br>我觉得$\beta$给定的情况下，VaR值没有意义，确实CVaR更有意义</p>
-<p>三个挑战：</p>
-<pre><code> - 公平性
- - 数据平面的快速重路由（遭遇故障时）：这是因为我们基于CVAR的优化形式必须考虑到某些隧道的不可用性可能意味着更多的交通量必须穿越其他隧道   重哈希？有意思
- - 实现计算可伸缩性：先把非凸变成凸优化，再在不怎么影响正确性的情况下缩小
-</code></pre><h2 id="TEAVAR优化框架"><a href="#TEAVAR优化框架" class="headerlink" title="TEAVAR优化框架"></a>TEAVAR优化框架</h2><p>神奇…我还是不太懂输入输出是啥（英文读起来太难受了OTZ）</p>
-<p>概率失效模型：SRG是什么？有些故障之间是相关的，不是简单的独立事件。但如果两个故障属于不同的SRG，那么就是独立的？所以SRG是神马。考虑故障模型通常以SRG为单位。通常把每个SRG是否故障作为网络的一个状态，而每个tunnel（tunnel好像是link的一个集合吧，相当于通道而不是简单的link链接）是否可用是状态的一个函数。但是flow又是什么概念呢？ flow是源和目的地，由流量$d_i$以及tunnel组成。（咦 这个tunnel是一条还是有可能多条啊  更正：应该是多条） </p>
+<h1 id="有的没的"><a href="#有的没的" class="headerlink" title="有的没的"></a>有的没的</h1><h2 id="introduce"><a href="#introduce" class="headerlink" title="introduce"></a>introduce</h2><p>FFC是啥…，多条线路的低利用性使得发生故障的时候重路由来维持稳定？<br>基于概率的网络模型：出发点是容易出故障的link，分配较少的带宽<br>VaR(x)和CVaR(x)的概念？主要没看懂这个图什么意思…（横轴是loss，纵轴是概率？）<br>​    $VaR_{\beta}(x)$ 代表给出$x$，有$\beta$的概率使得loss在$VaR_{\beta}(x)$以下</p>
+<p>​    $CVaR_{\beta}(x)$ 则是说loss高于$VaR_{\beta}(x)$的情况下的期望loss，可以用来衡量代价吧？<br>我觉得$\beta$给定的情况下，VaR值没有意义，确实CVaR更有意义<br>以优化CVaR为目标，收到了意想不到的效果<br>三个挑战：<br>​     - 公平性<br>​     - 数据平面的快速重路由（遭遇故障时）：这是因为我们基于CVAR的优化形式必须考虑到某些隧道的不可用性可能意味着更多的交通量必须穿越其他隧道   重哈希？有意思<br>​     - 实现计算可伸缩性：先把非凸变成凸优化，再在不怎么影响正确性的情况下缩小</p>
+<h2 id="TEAVAR优化框架"><a href="#TEAVAR优化框架" class="headerlink" title="TEAVAR优化框架"></a>TEAVAR优化框架</h2><p>神奇…我还是不太懂输入输出是啥（英文读起来太难受了OTZ）</p>
+<p>概率失效模型：SRG是什么？有些故障之间是相关的，不是简单的独立事件。但如果两个故障属于不同的SRG，那么就是独立的？所以SRG是神马。考虑故障模型通常以SRG为单位。通常把每个SRG是否故障作为网络的一个状态，而每个tunnel（tunnel好像是link的一个集合吧，相当于通道而不是简单的link链接）是否可用是状态的一个函数。但是flow又是什么概念呢？ flow是源和目的地，由流量$d_i$以及tunnel组成。（咦 这个tunnel是一条还是有可能多条啊  更正：应该是多条） 咦？event和SRG的关系是啥啊  state的单位是event？</p>
 <p>这个涉及到数学公式就有点看不懂了_(:з」∠)_</p>
 <p>场景修剪算法：这个dfs有什么用呢</p>
 <p>这一两页就结束了？就开始评估算法的效果了？</p>
-<h2 id="验证结果"><a href="#验证结果" class="headerlink" title="验证结果"></a>验证结果</h2><p> Weibull distribution：韦伯分布（用这个来拟合失效的概率）<br> 通道选择：oblivious paths, link-disjoint paths, and k-shortest paths<br> 遗忘路径、链接不相交路径和k-最短路径，前者效果最好</p>
+<h2 id="验证结果"><a href="#验证结果" class="headerlink" title="验证结果"></a>验证结果</h2><p> Weibull distribution：韦伯分布（用这个来拟合失效的概率） 为什么选择这个概率分布呢<br> 通道选择：oblivious paths, link-disjoint paths, and k-shortest paths<br> 遗忘路径、链接不相交路径和k-最短路径，前者效果最好</p>
+<h3 id="吞吐量和可用性"><a href="#吞吐量和可用性" class="headerlink" title="吞吐量和可用性"></a>吞吐量和可用性</h3><p> 对比的算法：</p>
+<ul>
+<li>SMORE：不明确保证可用性的情况下将最大链路利用率降至最低？？？不保证可用性还降利用率，这是在想啥？</li>
+<li>FFC：最大化吞吐量，还考虑了失败</li>
+<li>MaxMin：最大化每个用户的最小带宽（为了保证公平吗）</li>
+<li>TEAVAR：在给一个概率的情况下，最小化CVaR</li>
+</ul>
+<p>比较的项</p>
+<ul>
+<li>先是网络需求量增加时的可用性对比：可用性是用完全满足的demand除以总共的demand（有点奇怪思考脸）  增大需求量直至每个拓扑至少24个需求矩阵（需求矩阵is what？） 先是横向对比，然后是纵向对比（问题是这时候没有可用性作为输入，TEAVAR如何工作呢，难不成二分吗）</li>
+<li>在不放大网络的情况下 修改可用性需求看达到的吞吐量，TEAVAR是照常理来，而其他算法是原来的算法逼近</li>
+<li>与FFC比较允许带宽，FFC太粗粒度了，只有k可以调整，但是可用性差别很大</li>
+<li>tunnel选择算法的影响：oblivious routing tunnel selection 更好</li>
+</ul>
+<h3 id="概率估计的鲁棒性"><a href="#概率估计的鲁棒性" class="headerlink" title="概率估计的鲁棒性"></a>概率估计的鲁棒性</h3><p>wtf?<br>结论是就算的估计误差大，结果影响也不大倒是OTZ  低于线性增长<br>不过这个概率估计指的是估计谁呢（网络失败）</p>
+<h3 id="场景修剪的敏感度"><a href="#场景修剪的敏感度" class="headerlink" title="场景修剪的敏感度"></a>场景修剪的敏感度</h3><p>大概就是推出场景修剪大幅度降低了数据范围但是正确率影响不大？<br>喔  场景修剪就是把场景出现概率小于cutoff的节点给去掉对吧？然后看剩下的节点的出现概率之和就是覆盖率了<br>emmm</p>
+<h2 id="讨论框架的可拓展性"><a href="#讨论框架的可拓展性" class="headerlink" title="讨论框架的可拓展性"></a>讨论框架的可拓展性</h2><ul>
+<li>应对需求不确定性</li>
+<li>学习失败的概率</li>
+<li>控制数据平面故障？</li>
+<li>数据范围加大</li>
+<li>服务优先级？仍然需要这个工作</li>
+</ul>
 
           
         
