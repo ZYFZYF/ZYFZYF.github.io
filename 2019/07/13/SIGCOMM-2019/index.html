@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="这是哪儿呢?">
 <meta property="og:description" content="写在前面（这四个字仿佛对我很有吸引力） 起因是读硕找导师，导师说给我整理些资料看看，整理了两天（还是被我催了一次）后发给我这篇SIGCOMM 2019的论文，标题是《TeaVaR: Striking the Right Utilization-Availability Balance inWAN Traﬀic Engineering》，总之先试着读读看吧。 （对了，当时和导师面谈的时候导师问我网安">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-16T15:57:31.490Z">
+<meta property="og:updated_time" content="2019-07-18T16:35:36.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SIGCOMM 2019">
 <meta name="twitter:description" content="写在前面（这四个字仿佛对我很有吸引力） 起因是读硕找导师，导师说给我整理些资料看看，整理了两天（还是被我催了一次）后发给我这篇SIGCOMM 2019的论文，标题是《TeaVaR: Striking the Right Utilization-Availability Balance inWAN Traﬀic Engineering》，总之先试着读读看吧。 （对了，当时和导师面谈的时候导师问我网安">
@@ -304,7 +304,7 @@
 <p>起因是读硕找导师，导师说给我整理些资料看看，整理了两天（还是被我催了一次）后发给我这篇SIGCOMM 2019的论文，标题是《TeaVaR: Striking the Right Utilization-Availability Balance in<br>WAN Traﬀic Engineering》，总之先试着读读看吧。</p>
 <p>（对了，当时和导师面谈的时候导师问我网安为什么只拿了个B，我就实话全说了-室友抄我的，所以丢了20分，而最关键的是当时这门课的老师就和我隔了一个工位远hhh 人生真是充满戏剧性）</p>
 <h1 id="有的没的"><a href="#有的没的" class="headerlink" title="有的没的"></a>有的没的</h1><h2 id="introduce"><a href="#introduce" class="headerlink" title="introduce"></a>introduce</h2><p>FFC是啥…，多条线路的低利用性使得发生故障的时候重路由来维持稳定？<br>基于概率的网络模型：出发点是容易出故障的link，分配较少的带宽<br>VaR(x)和CVaR(x)的概念？主要没看懂这个图什么意思…（横轴是loss，纵轴是概率？）<br>​    $VaR_{\beta}(x)$ 代表给出$x$，有$\beta$的概率使得loss在$VaR_{\beta}(x)$以下</p>
-<p>​    $CVaR_{\beta}(x)$ 则是说loss高于$VaR_{\beta}(x)$的情况下的期望loss，可以用来衡量代价吧？<br>我觉得$\beta$给定的情况下，VaR值没有意义，确实CVaR更有意义<br>以优化CVaR为目标，收到了意想不到的效果<br>三个挑战：<br>​     - 公平性<br>​     - 数据平面的快速重路由（遭遇故障时）：这是因为我们基于CVAR的优化形式必须考虑到某些隧道的不可用性可能意味着更多的交通量必须穿越其他隧道   重哈希？有意思<br>​     - 实现计算可伸缩性：先把非凸变成凸优化，再在不怎么影响正确性的情况下缩小</p>
+<p>​    $CVaR_{\beta}(x)$ 则是说loss高于$VaR_{\beta}(x)$的情况下的期望loss，可以用来衡量代价吧？<br>我觉得$\beta$给定的情况下，VaR值没有意义，确实CVaR更有意义<br>以优化CVaR为目标，收到了意想不到的效果<br>三个挑战：<br>​     - 公平性<br>​     - 数据平面的快速重路由（遭遇故障时）：这是因为我们基于CVAR的优化形式必须考虑到某些隧道的不可用性可能意味着更多的交通量必须穿越其他隧道   重哈希？有意思<br>​     - 实现计算可伸缩性：先把非凸变成凸优化，再在不怎么影响正确性的情况下缩小（可伸缩性就是说数据规模增大的时候的效果也要一样好）</p>
 <h2 id="TEAVAR优化框架"><a href="#TEAVAR优化框架" class="headerlink" title="TEAVAR优化框架"></a>TEAVAR优化框架</h2><p>神奇…我还是不太懂输入输出是啥（英文读起来太难受了OTZ）</p>
 <p>概率失效模型：SRG是什么？有些故障之间是相关的，不是简单的独立事件。但如果两个故障属于不同的SRG，那么就是独立的？所以SRG是神马。考虑故障模型通常以SRG为单位。通常把每个SRG是否故障作为网络的一个状态，而每个tunnel（tunnel好像是link的一个集合吧，相当于通道而不是简单的link链接）是否可用是状态的一个函数。但是flow又是什么概念呢？ flow是源和目的地，由流量$d_i$以及tunnel组成。（咦 这个tunnel是一条还是有可能多条啊  更正：应该是多条） 咦？event和SRG的关系是啥啊  state的单位是event？</p>
 <p>这个涉及到数学公式就有点看不懂了_(:з」∠)_</p>
@@ -336,7 +336,14 @@
 <li>数据范围加大</li>
 <li>服务优先级？仍然需要这个工作</li>
 </ul>
-<h1 id="看完之后仍存在的问题"><a href="#看完之后仍存在的问题" class="headerlink" title="看完之后仍存在的问题"></a>看完之后仍存在的问题</h1><p><del>SRG和event的关系，可能需要看SRG相关的论文才能知道（看了百度是shared risk group意思是要么都出问题，要么都不出问题？比如埋在同一个地沟或管道的链路或光纤）那这个问题就解决了</del><br>一个time epoch里面不考虑传输时间的吗 比方说错开时间就可以让总流量“超过”负载了<br>实用性（如何实现呢？这么大一个线性规划）</p>
+<h1 id="看完之后仍存在的问题"><a href="#看完之后仍存在的问题" class="headerlink" title="看完之后仍存在的问题"></a>看完之后仍存在的问题</h1><p><del>SRG和event的关系，可能需要看SRG相关的论文才能知道（看了百度是shared risk group意思是要么都出问题，要么都不出问题？比如埋在同一个地沟或管道的链路或光纤）那这个问题就解决了</del>但我觉得SRG还是不好定义</p>
+<p>一个time epoch里面不考虑传输时间的吗 比方说错开时间就可以让总流量“超过”负载了<br>实用性（如何实现呢？这么大一个线性规划）</p>
+<p>Oblivious Routing是啥？无意识路由是在每对节点（或一组流）之间选择一个（注意是一个吗？）路由的问题，而不知道每对节点之间的流量或需求，其目标是最小化图中任何边上的最大拥塞。（因为不知道每对节点之间要走的流量所以是无意识？那这样需求不一样的话岂不是会有瑕疵？边上的阻塞就是会被tunnel经过的次数吧？）</p>
+<p>link-disjoint 网络中给定的一对源节点和目标节点之间的路径，如果它们没有公共（即重叠）链接，则称为链路不相交；如果除了源节点和目标节点之外，它们没有公共节点，则称为节点不相交。</p>
+<p>之所以TEAVAR在无提示路径上表现好也是因为无提示路径考虑到了过度使用链路的问题，而k短路会有很多相交的。而链接不相交可能会使得路径过于分散？（总之无提示和链接不相交肯定有不小的区别）链接不相交会使得取出的路径偏少？从而利用率可能很低？</p>
+<p>FFC又叫FEC，就是事先考虑错误的控制，而不需要重新传输/报告错误（感觉和海明码差不多）</p>
+<p>我觉得这个思路还是挺新颖的，把金融领域的这样一个简单的思想融入到流量分配上（就像心理学上的注意力机制在自然语言处理中的应用上）</p>
+<p>再细节的可能要看看代码才能理解，这个分配方案的意思是肯定不会满足所有需求吗？这对应用不是很不友好吗？</p>
 
       
     </div>
