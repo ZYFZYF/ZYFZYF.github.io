@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="这是哪儿呢?">
 <meta property="og:description" content="写在前面（这四个字仿佛对我很有吸引力） 起因是读硕找导师，导师说给我整理些资料看看，整理了两天（还是被我催了一次）后发给我这篇SIGCOMM 2019的论文，标题是《TeaVaR: Striking the Right Utilization-Availability Balance inWAN Traﬀic Engineering》，总之先试着读读看吧。 （对了，当时和导师面谈的时候导师问我网安">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T16:35:36.400Z">
+<meta property="og:updated_time" content="2019-07-19T00:48:24.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SIGCOMM 2019">
 <meta name="twitter:description" content="写在前面（这四个字仿佛对我很有吸引力） 起因是读硕找导师，导师说给我整理些资料看看，整理了两天（还是被我催了一次）后发给我这篇SIGCOMM 2019的论文，标题是《TeaVaR: Striking the Right Utilization-Availability Balance inWAN Traﬀic Engineering》，总之先试着读读看吧。 （对了，当时和导师面谈的时候导师问我网安">
@@ -343,7 +343,10 @@
 <p>之所以TEAVAR在无提示路径上表现好也是因为无提示路径考虑到了过度使用链路的问题，而k短路会有很多相交的。而链接不相交可能会使得路径过于分散？（总之无提示和链接不相交肯定有不小的区别）链接不相交会使得取出的路径偏少？从而利用率可能很低？</p>
 <p>FFC又叫FEC，就是事先考虑错误的控制，而不需要重新传输/报告错误（感觉和海明码差不多）</p>
 <p>我觉得这个思路还是挺新颖的，把金融领域的这样一个简单的思想融入到流量分配上（就像心理学上的注意力机制在自然语言处理中的应用上）</p>
-<p>再细节的可能要看看代码才能理解，这个分配方案的意思是肯定不会满足所有需求吗？这对应用不是很不友好吗？</p>
+<p>再细节的可能要看看代码才能理解，这个分配方案的意思是肯定不会满足所有需求吗？这对应用不是很不友好吗？还是说这个其实是在一定的概率下，保证每个flow有多少的带宽（不对啊。。。拿这样最好情况都无法全部满足）</p>
+<p>怎么混和啊？比方说两个user的可用性要求不一样</p>
+<p>看论文最重要的是什么呢？（看思想？看推导？看论文写作？需要细致到代码吗？看实用性？）</p>
+<p>$\beta$必须事先给出来？不然得重算啊</p>
 
       
     </div>
