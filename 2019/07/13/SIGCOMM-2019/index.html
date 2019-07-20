@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="这是哪儿呢?">
 <meta property="og:description" content="写在前面（这四个字仿佛对我很有吸引力） 起因是读硕找导师，导师说给我整理些资料看看，整理了两天（还是被我催了一次）后发给我这篇SIGCOMM 2019的论文，标题是《TeaVaR: Striking the Right Utilization-Availability Balance inWAN Traﬀic Engineering》，总之先试着读读看吧。 （对了，当时和导师面谈的时候导师问我网安">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-19T03:20:35.635Z">
+<meta property="og:updated_time" content="2019-07-19T10:13:00.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SIGCOMM 2019">
 <meta name="twitter:description" content="写在前面（这四个字仿佛对我很有吸引力） 起因是读硕找导师，导师说给我整理些资料看看，整理了两天（还是被我催了一次）后发给我这篇SIGCOMM 2019的论文，标题是《TeaVaR: Striking the Right Utilization-Availability Balance inWAN Traﬀic Engineering》，总之先试着读读看吧。 （对了，当时和导师面谈的时候导师问我网安">
@@ -348,6 +348,8 @@
 <p>看论文最重要的是什么呢？（看思想？看推导？看论文写作？需要细致到代码吗？看实用性？）</p>
 <p>$\beta$必须事先给出来？不然改一个$\beta$得重算啊</p>
 <p>用Julia实现的？</p>
+<h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>一直在纠结论文的细节，完全没想怎么给别人讲清楚的事情，果然今天被老师批判了一顿。不过有人教训我总是好的，好像有读博的机会呢？还没想好要不要读_(:з」∠)_</p>
+<p>总之，这篇文章先到这儿吧。如果之后能听到演讲的话再看看能不能有一些新想法。</p>
 
       
     </div>
@@ -513,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有的没的"><span class="nav-number">2.</span> <span class="nav-text">有的没的</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduce"><span class="nav-number">2.1.</span> <span class="nav-text">introduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TEAVAR优化框架"><span class="nav-number">2.2.</span> <span class="nav-text">TEAVAR优化框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证结果"><span class="nav-number">2.3.</span> <span class="nav-text">验证结果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#吞吐量和可用性"><span class="nav-number">2.3.1.</span> <span class="nav-text">吞吐量和可用性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概率估计的鲁棒性"><span class="nav-number">2.3.2.</span> <span class="nav-text">概率估计的鲁棒性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#场景修剪的敏感度"><span class="nav-number">2.3.3.</span> <span class="nav-text">场景修剪的敏感度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讨论框架的可拓展性"><span class="nav-number">2.4.</span> <span class="nav-text">讨论框架的可拓展性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#看完之后仍存在的问题"><span class="nav-number">3.</span> <span class="nav-text">看完之后仍存在的问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有的没的"><span class="nav-number">2.</span> <span class="nav-text">有的没的</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduce"><span class="nav-number">2.1.</span> <span class="nav-text">introduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TEAVAR优化框架"><span class="nav-number">2.2.</span> <span class="nav-text">TEAVAR优化框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证结果"><span class="nav-number">2.3.</span> <span class="nav-text">验证结果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#吞吐量和可用性"><span class="nav-number">2.3.1.</span> <span class="nav-text">吞吐量和可用性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概率估计的鲁棒性"><span class="nav-number">2.3.2.</span> <span class="nav-text">概率估计的鲁棒性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#场景修剪的敏感度"><span class="nav-number">2.3.3.</span> <span class="nav-text">场景修剪的敏感度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讨论框架的可拓展性"><span class="nav-number">2.4.</span> <span class="nav-text">讨论框架的可拓展性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#看完之后仍存在的问题"><span class="nav-number">3.</span> <span class="nav-text">看完之后仍存在的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写在后面"><span class="nav-number">4.</span> <span class="nav-text">写在后面</span></a></li></ol></div>
             
 
           </div>
