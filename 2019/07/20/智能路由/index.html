@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="这是哪儿呢?">
 <meta property="og:description" content="写在前面老师给了个ppt，照上面的references把论文都下了下来，打算一篇篇看过去最后给老师汇报的时候做个ppt One More Weight is Enough: Toward the Optimal Traffic Engineering with OSPF（居然是学长写的OTZ） 有的没的OSPF是最短路，但是权重不好定啊，好知道的只有链路的容量，所以有一种做法就是把容量的倒数作为权">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-22T16:47:06.825Z">
+<meta property="og:updated_time" content="2019-08-01T12:10:38.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="智能路由">
 <meta name="twitter:description" content="写在前面老师给了个ppt，照上面的references把论文都下了下来，打算一篇篇看过去最后给老师汇报的时候做个ppt One More Weight is Enough: Toward the Optimal Traffic Engineering with OSPF（居然是学长写的OTZ） 有的没的OSPF是最短路，但是权重不好定啊，好知道的只有链路的容量，所以有一种做法就是把容量的倒数作为权">
@@ -338,6 +338,44 @@
 <p>MLFQ naturally separates short and long flows</p>
 </blockquote>
 <p>相当于用DNN来把环境降维？</p>
+<p>value-based方法，需要计算价值函数（value function），根据自己认为的高价值选择行（action）的方法，如Q Learning。<br>policy-based方法，不需要根据value function选择action，可以直接得出policy的方法。</p>
+<p>但是DRL还是没能理解_(:з」∠)_</p>
+<p>总之数据中心的问题在于要把流量分成K个等级，所以把agent、action、reward带进去就可以了？</p>
+<p>严格优先队列（SPQ）：这是一种最为简单的排队方式，它首先为最高优先级队列进行服务，直到该队列为空，然后是对下一个次高优先级队列服务，以此类推</p>
+<p>数据中心的流调度问题</p>
+<p>FCT： Flow Completed Time </p>
+<p>这个reward函数设置的怎么看都很奇怪？直接-Tpuf不可以吗？ 或者-Tpuf的平均值？但是想体现和之前的变化？所以必须是相对的？emmm感觉有一丝理解</p>
+<p>不太理解这个数据中心的含义： server端和所谓的big-switch在做什么  是并行计算的吗？ server只有各自的信息？ switch有所有的信息？</p>
+<p>需要延迟不到1ms</p>
+<p>其实是模仿动物的外围和神经系统（鲸了，真就多学科交叉吧）</p>
+<p>MLFQ是这样做的：一开始放在最高队列，然后发送一定数量的bytes，然后就降级。这个是由本地确定的（所以为什么不直接按累计阈值划到指定的队列呢？除非事先不知道flow的流量大小？这个阈值可以由CS来调控）</p>
+<p>PS有两个模式：执行模式，也就是MLFQ；监视模式，收集流大小和完成信息。大流丢给CS去做</p>
+<p>所以CS需要做两件事儿：一是确定PS的阈值，叫做sRLA；二是确定long flow的优先级、route和rate（后两个是啥）</p>
+<p>Unlike prior works that used machine learning in datacenter problems [5, 36, 60], AuTO is unique due to its target - optimization of real values in continuous action space. （凭什么你是特别的逃）</p>
+<p>PG = Policy Gradient实际上over state and action space，对于每一个state，输出了各个action的概率，那么action就得是离散的，所以对于本题目来说没法算</p>
+<p>而DPG则不一样，他针对一个state直接输出了action，所以适合本题？（样本少、policy更明确）</p>
+<blockquote>
+<p>Actor-Critic的训练。我先通俗解释一下。<br>Actor看到游戏目前的state，做出一个action。<br>Critic根据state和action两者，对actor刚才的表现打一个分数。<br>Actor依据critic（评委）的打分，调整自己的策略（actor神经网络参数），争取下次做得更好。<br>Critic根据系统给出的reward（相当于ground truth）和其他评委的打分（critic target）来调整自己的打分策略（critic神经网络参数）。<br>一开始actor随机表演，critic随机打分。但是由于reward的存在，critic评分越来越准，actor表现越来越好。</p>
+<p>作者：nesuhS 链接：<a href="https://www.zhihu.com/question/56692640/answer/157280972" target="_blank" rel="noopener">https://www.zhihu.com/question/56692640/answer/157280972</a></p>
+</blockquote>
+<p>辣么，DDPG又是啥-&gt;需要知道DQN的知识-&gt;记忆库(Experience replay)</p>
+<p>deterministic:代表是确定性的策略<br>stochastic:是概率策略，有些时候是有好处的</p>
+<p>idle rate: 空转率</p>
+<p>M/M/1模型：一种出生-死亡过程，此随机过程中的每一个状态代表模型中人数的数目。因为模型的队列长度无限且参与人数亦无限，故此状态数目亦为无限。例如状态0表示模型闲置、状态1表示模型有一人在接受服务、状态2表示模型有二人（一人正接受服务、一人在等候），如此类推</p>
+<p>增强学习的好处：能够自适应环境变化</p>
+<p>这篇先过…后面又晕了</p>
+<h1 id="Learning-and-Generating-Distributed-Routing-Protocols-Using-Graph-Based-Deep-Learning"><a href="#Learning-and-Generating-Distributed-Routing-Protocols-Using-Graph-Based-Deep-Learning" class="headerlink" title="Learning and Generating Distributed Routing Protocols Using Graph-Based Deep Learning"></a>Learning and Generating Distributed Routing Protocols Using Graph-Based Deep Learning</h1><p>看起来很短的样子_(:з」∠)_</p>
+<h2 id="有的没的-3"><a href="#有的没的-3" class="headerlink" title="有的没的"></a>有的没的</h2><p>max-min fair routing 这个到底是啥？aim at maximizing the minimum allocated bandwidth between all possible sourcedestination pairs in the network</p>
+<p>2333看差批了，看上一篇论文去了</p>
+<p>现有的提升GNN准确性和应用型的两个模型：</p>
+<p>Gated Graph Neural Network： 门控网络，实际上是LSTM的变种，可以解决远距离依赖）</p>
+<p>Edge atention： 注意力机制（之前就一直没看懂_(:з」∠)_ which provides the ability to a neural network to focus on a subset of its inputs） we wish to give the ability to each node to focus only on a subset of its neighborhood</p>
+<p>Given a destination router identifer Rd , each router must locally decide which output interface should be used.这就是分布式路由协议的定义</p>
+<p>0.0看起来很神奇的样机</p>
+<p>需要学会丢包（因此用传输矩阵以p的概率丢失…这也太暴力了）和拓扑变化</p>
+<p>所以到底啥事冷启动、啥是热启动</p>
+<h1 id="Routing-or-Computing-The-Paradigm-Shift-Towards-Intelligent-Computer-Network-Packet-Transmission-Based-on-Deep-Learning"><a href="#Routing-or-Computing-The-Paradigm-Shift-Towards-Intelligent-Computer-Network-Packet-Transmission-Based-on-Deep-Learning" class="headerlink" title="Routing or Computing? The Paradigm Shift Towards Intelligent Computer Network Packet Transmission Based on Deep Learning"></a>Routing or Computing? The Paradigm Shift Towards Intelligent Computer Network Packet Transmission Based on Deep Learning</h1><p>好长啊不想看TAT 看看INTRODUCTION算了</p>
+<h2 id="有的没的-4"><a href="#有的没的-4" class="headerlink" title="有的没的"></a>有的没的</h2><p>不想看了</p>
 
       
     </div>
@@ -499,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#One-More-Weight-is-Enough-Toward-the-Optimal-Traffic-Engineering-with-OSPF"><span class="nav-number">2.</span> <span class="nav-text">One More Weight is Enough: Toward the Optimal Traffic Engineering with OSPF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有的没的"><span class="nav-number">2.1.</span> <span class="nav-text">有的没的</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Learning-To-Route"><span class="nav-number">3.</span> <span class="nav-text">Learning To Route</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有的没的-1"><span class="nav-number">3.1.</span> <span class="nav-text">有的没的</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AuTO-Scaling-Deep-Reinforcement-Learning-for-Datacenter-Scale-Automatic-Traffic-Optimization"><span class="nav-number">4.</span> <span class="nav-text">AuTO: Scaling Deep Reinforcement Learning for Datacenter-Scale Automatic Traffic Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有的没的-2"><span class="nav-number">4.1.</span> <span class="nav-text">有的没的</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#One-More-Weight-is-Enough-Toward-the-Optimal-Traffic-Engineering-with-OSPF"><span class="nav-number">2.</span> <span class="nav-text">One More Weight is Enough: Toward the Optimal Traffic Engineering with OSPF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有的没的"><span class="nav-number">2.1.</span> <span class="nav-text">有的没的</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Learning-To-Route"><span class="nav-number">3.</span> <span class="nav-text">Learning To Route</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有的没的-1"><span class="nav-number">3.1.</span> <span class="nav-text">有的没的</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AuTO-Scaling-Deep-Reinforcement-Learning-for-Datacenter-Scale-Automatic-Traffic-Optimization"><span class="nav-number">4.</span> <span class="nav-text">AuTO: Scaling Deep Reinforcement Learning for Datacenter-Scale Automatic Traffic Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有的没的-2"><span class="nav-number">4.1.</span> <span class="nav-text">有的没的</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Learning-and-Generating-Distributed-Routing-Protocols-Using-Graph-Based-Deep-Learning"><span class="nav-number">5.</span> <span class="nav-text">Learning and Generating Distributed Routing Protocols Using Graph-Based Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有的没的-3"><span class="nav-number">5.1.</span> <span class="nav-text">有的没的</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Routing-or-Computing-The-Paradigm-Shift-Towards-Intelligent-Computer-Network-Packet-Transmission-Based-on-Deep-Learning"><span class="nav-number">6.</span> <span class="nav-text">Routing or Computing? The Paradigm Shift Towards Intelligent Computer Network Packet Transmission Based on Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有的没的-4"><span class="nav-number">6.1.</span> <span class="nav-text">有的没的</span></a></li></ol></li></ol></div>
             
 
           </div>
