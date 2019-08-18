@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="论文,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="写在前面暑假在鹅肠实习，导师又给派任务了_(:з」∠)_ 上班又不敢摸鱼，只能周末肝一肝，勉强度日这样子 Kitsune: An Ensemble of Autoencoders for Online Network Intrusion Detection问题引入人工智能的解决方法固然好，但是面临的问题是  需要的资源多，要train模型，很多路由器等没有这个算力或者内存去跑模型 监督的方式需要对">
+<meta name="keywords" content="论文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="异常检测">
+<meta property="og:url" content="http://yoursite.com/2019/08/18/异常检测/index.html">
+<meta property="og:site_name" content="这是哪儿呢?">
+<meta property="og:description" content="写在前面暑假在鹅肠实习，导师又给派任务了_(:з」∠)_ 上班又不敢摸鱼，只能周末肝一肝，勉强度日这样子 Kitsune: An Ensemble of Autoencoders for Online Network Intrusion Detection问题引入人工智能的解决方法固然好，但是面临的问题是  需要的资源多，要train模型，很多路由器等没有这个算力或者内存去跑模型 监督的方式需要对">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-18T13:17:49.617Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="异常检测">
+<meta name="twitter:description" content="写在前面暑假在鹅肠实习，导师又给派任务了_(:з」∠)_ 上班又不敢摸鱼，只能周末肝一肝，勉强度日这样子 Kitsune: An Ensemble of Autoencoders for Online Network Intrusion Detection问题引入人工智能的解决方法固然好，但是面临的问题是  需要的资源多，要train模型，很多路由器等没有这个算力或者内存去跑模型 监督的方式需要对">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/18/异常检测/">
+
+
+
+
+
+  <title>异常检测 | 这是哪儿呢?</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">这是哪儿呢?</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/18/异常检测/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZYFZYF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这是哪儿呢?">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">异常检测</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-18T14:19:10+08:00">
+                2019-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>暑假在鹅肠实习，导师又给派任务了_(:з」∠)_ 上班又不敢摸鱼，只能周末肝一肝，勉强度日这样子</p>
+<h1 id="Kitsune-An-Ensemble-of-Autoencoders-for-Online-Network-Intrusion-Detection"><a href="#Kitsune-An-Ensemble-of-Autoencoders-for-Online-Network-Intrusion-Detection" class="headerlink" title="Kitsune: An Ensemble of Autoencoders for Online Network Intrusion Detection"></a>Kitsune: An Ensemble of Autoencoders for Online Network Intrusion Detection</h1><h2 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h2><p>人工智能的解决方法固然好，但是面临的问题是</p>
+<ul>
+<li>需要的资源多，要train模型，很多路由器等没有这个算力或者内存去跑模型</li>
+<li>监督的方式需要对network traffic进行label</li>
+</ul>
+<p>而Kitsume就是这样一个无监督的插件，运行在本地网络上，他可以自动提取网络的pattern，用的是an ensemble of autoencodes</p>
+<p>所以先去学一下autoencoder_(:з」∠)_</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
+<li>传统方法将NIDS部署在网关上，但这样只能检测到进入和离开的恶意流量，而无法检测到网络本身的恶意流量。因此，分布式NIDS被部署到了一系列路由和网关上</li>
+<li>引入ANN作为入侵检测的分类器后的传统做法：<ul>
+<li>需要expert来收集正样本和负样本</li>
+<li>用强大的CPU或GPU去train</li>
+<li>把train好的模型传到部署了NIDS的设备上</li>
+<li>设备去evaluate当前的网络状况</li>
+</ul>
+</li>
+<li>想把ANN分类器嵌入不贵的路由器中有点不现实：<ul>
+<li>离线处理：很多数据需要传送到远端再运算</li>
+<li>监督学习：只能学到的training set里提到的恶意攻击类型，泛化能力不强，需要一直更新</li>
+<li>高复杂度：ANN复杂度太高，随神经元的增加需要计算的也多</li>
+</ul>
+</li>
+<li>本文提出的方法：<ul>
+<li>在线处理</li>
+<li>无监督：不再需要是否恶意的标签数据，而获取其他meta information（元信息），但是怎么处理呢</li>
+<li>低复杂度：包处理速度必须超过最大包到达速度，换句话说不能让包在等待</li>
+</ul>
+</li>
+<li>（看起来有点牛逼啊）<blockquote>
+<p>日本民间传说中的Kitsune是一种神秘的狐狸般的生物，有许多尾巴，可以模仿不同的形式，并且随着经验增加其力量。 同样，我们的Kitsune有一个小型神经网络（自动编码器）的集合，它们经过训练可以模拟（重建）网络流量模式，并且其性能会逐渐提高。    </p>
+</blockquote>
+</li>
+</ul>
+<h2 id="AutoEncoder"><a href="#AutoEncoder" class="headerlink" title="AutoEncoder"></a>AutoEncoder</h2><ul>
+<li>神经网络的非监督学习，相当于神经网络版的PCA，不仅要降维，甚至降哪些特征都auto提取，相当于加强版PCA吧</li>
+<li><p>三层神经网络：输入层、隐藏层、输出层（输出层与输入层有着相同的结构），想学习的函数其实是$h(x) = x$，但中间这一层hidden layer强行降维了，相当于提取了一层最有用的特征出来</p>
+<blockquote>
+<p>这么做的意义在于我们想发现输入数据中隐含的一些特定的结构，并训练出一种更好的表达输入数据的方法。</p>
+</blockquote>
+</li>
+<li>之所以叫自编码因为它本身做的就是一件自己到自己的映射， 相当于把自己重新编码了一下</li>
+<li>GD和SGD之间的区别：<ul>
+<li>相同点是每次迭代都会更新模型的参数</li>
+<li>区别是GD每次会用到所有训练数据，SGD则只用一条数据来更新（相对而言更随机一点，因为单条样本本身随机性就比较大）</li>
+</ul>
+</li>
+<li>autoencoder就是想要映射的label就是自己，所以也就是无监督的训练了（而这个autoencoder本身和seq2seq中的encoder-decoder模型也没什么关联）</li>
+<li>如果autoencoder在layer size上是镜像的，那么权重也会是镜像的</li>
+<li>autoencoder的用途：产生新文本、过滤图像噪声</li>
+<li>异常检测的使用：<ul>
+<li>训练时：用normal数据更新，并且记录最大的RMSE</li>
+<li>执行时：计算RMSE，发现&gt;记录值*一个敏感系数，就报警</li>
+<li>（emmmmm这样不还是比较鸡肋吗）</li>
+</ul>
+</li>
+<li>复杂度：受限于网络规模，三层七神经元</li>
+</ul>
+<h2 id="KITSUNE"><a href="#KITSUNE" class="headerlink" title="KITSUNE"></a>KITSUNE</h2><p>终于上正菜了_(:з」∠)_</p>
+<ul>
+<li>overview<ul>
+<li>plug-and-play：即插即用（这么厉害啊！</li>
+<li>跑在简单的网络路由器上</li>
+<li>框架由下列部分组成：<ul>
+<li>抓包：用API拿到raw packet（binary）</li>
+<li>解包：用外部工具拿到包的真实数据（meta information）</li>
+<li>特征提取：提取n个特征，有关这个包和包的来源（提取超过100个统计信息（这么多真的来得及吗），这些特征形成了x</li>
+<li>特征映射：创造一个比较小的instance提供给异常检测，学习x-&gt;v的映射</li>
+<li>异常检测：给出v，给出异常结果（仿佛这边才是autoencoder？）</li>
+</ul>
+</li>
+<li>AD部分叫KitNET，有一个主要的参数是输入参数的最大值（这个影响了检测的准确性和速度的平衡，放在后面讨论）</li>
+<li>FM和AD都有两个模式：train和exec，前者更新参数，没有输出；后者不更新参数但是有输出</li>
+</ul>
+</li>
+<li>FE<ul>
+<li>这部分主要是特征工程</li>
+<li>面临的困难是：不同channel的包交错、同一时刻会有很多包、包到达的速度非常快<ul>
+<li>一个naive的方法是每个channel开一个window来持续计算，但是这样需要很多内存并且不方便扩展（可能需要持续的数据：比方说近100个包的平均大小、数量、方差来检测是否有突发之类的异常）</li>
+</ul>
+</li>
+<li>因此本文提出了一种高速特征提取的框架， 动态数据流、增量统计、damped window（不懂什么意思）（这才是好文章…工程方面也这么强）</li>
+<li>之所以不用滑动窗口是因为固定size的window实际上有很多缺陷（例如数目突增的话），而且内存需求也会变大</li>
+<li>所以抛弃旧值的方法就是用damped，阻尼来让之前的数据不断乘一个比例（这和我小学期那个东西有什么区别哦。。。听起来好高大上）</li>
+<li>使用了不同时间域的窗口：比方说100ms、500ms内的；最后能获得115个feature，因此n=115</li>
+</ul>
+</li>
+<li>FM<ul>
+<li>从提取的n个特征构建k个sub-instance，有限制：<ul>
+<li>每个instance不超过m个feature</li>
+<li>单射</li>
+<li>尽可能覆盖X</li>
+<li>能够在线发现</li>
+</ul>
+</li>
+<li>方法是：递增的将n个特征聚类成k个组（具体的距离怎么算没弄清楚，但是看论文是可以自洽的）</li>
+</ul>
+</li>
+<li>AD<ul>
+<li>每一个instance也就是v被送到一个autoencoder上</li>
+<li>output layer处也是一个antuencoder，而它的输入是ensemble layer层每个autoencoder输出的RMSE。</li>
+<li>train-mode 必须运行在normal data上，exec-mode就只前向传播</li>
+</ul>
+</li>
+<li>所以必须人为的一开始就知道normal data长啥样，然后train一段时间，之后再exec？</li>
+</ul>
+<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><p>先不看了_(:з」∠)_</p>
+<h1 id="Effective-Detection-of-Multimedia-Protocol-Tunneling-using-Machine-Learning"><a href="#Effective-Detection-of-Multimedia-Protocol-Tunneling-using-Machine-Learning" class="headerlink" title="Effective Detection of Multimedia Protocol Tunneling using Machine Learning"></a>Effective Detection of Multimedia Protocol Tunneling using Machine Learning</h1><p>好长_(:з」∠)_</p>
+<p>机器学习在多媒体协议隧道的有效检测？</p>
+<h2 id="问题引入-1"><a href="#问题引入-1" class="headerlink" title="问题引入"></a>问题引入</h2><p>多媒体协议隧道可以把隐蔽数据编码到视频/音频通道中。该项技术的不可观察性指对手无法从streams中分辨这里面是否携带了隐藏信道？</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/论文/" rel="tag"># 论文</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/20/智能路由/" rel="next" title="智能路由">
+                <i class="fa fa-chevron-left"></i> 智能路由
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/18/如何说话的TIPS/" rel="prev" title="如何说话的TIPS">
+                如何说话的TIPS <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZYFZYF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kitsune-An-Ensemble-of-Autoencoders-for-Online-Network-Intrusion-Detection"><span class="nav-number">2.</span> <span class="nav-text">Kitsune: An Ensemble of Autoencoders for Online Network Intrusion Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题引入"><span class="nav-number">2.1.</span> <span class="nav-text">问题引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">2.2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AutoEncoder"><span class="nav-number">2.3.</span> <span class="nav-text">AutoEncoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KITSUNE"><span class="nav-number">2.4.</span> <span class="nav-text">KITSUNE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluation"><span class="nav-number">2.5.</span> <span class="nav-text">Evaluation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Effective-Detection-of-Multimedia-Protocol-Tunneling-using-Machine-Learning"><span class="nav-number">3.</span> <span class="nav-text">Effective Detection of Multimedia Protocol Tunneling using Machine Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题引入-1"><span class="nav-number">3.1.</span> <span class="nav-text">问题引入</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZYFZYF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
