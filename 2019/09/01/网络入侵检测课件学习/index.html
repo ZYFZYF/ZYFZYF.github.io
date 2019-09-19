@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="学习,">
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="这是哪儿呢?" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="怎么感觉这个博客里全是学习的笔记了…有点无趣，这不太符合我的初衷哎T_T w1-课程概述 居然还讲大数据和基于SDN的入侵检测，听起来不错 WannaCry为啥会加这样一个开关呢？ 20世纪以来入侵检测的发展方向 检测与防护结合 NIDPS 场景拓展（无线、移动、云计算） 与人工智能结合   入侵检测目前面临的问题 误报和漏报（这应该是亘古不变的话题吧） 基于特征的话滞后，无法有效应对新型入侵 加">
+<meta name="keywords" content="学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络入侵检测课件学习">
+<meta property="og:url" content="http://yoursite.com/2019/09/01/网络入侵检测课件学习/index.html">
+<meta property="og:site_name" content="这是哪儿呢?">
+<meta property="og:description" content="怎么感觉这个博客里全是学习的笔记了…有点无趣，这不太符合我的初衷哎T_T w1-课程概述 居然还讲大数据和基于SDN的入侵检测，听起来不错 WannaCry为啥会加这样一个开关呢？ 20世纪以来入侵检测的发展方向 检测与防护结合 NIDPS 场景拓展（无线、移动、云计算） 与人工智能结合   入侵检测目前面临的问题 误报和漏报（这应该是亘古不变的话题吧） 基于特征的话滞后，无法有效应对新型入侵 加">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-07T11:32:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络入侵检测课件学习">
+<meta name="twitter:description" content="怎么感觉这个博客里全是学习的笔记了…有点无趣，这不太符合我的初衷哎T_T w1-课程概述 居然还讲大数据和基于SDN的入侵检测，听起来不错 WannaCry为啥会加这样一个开关呢？ 20世纪以来入侵检测的发展方向 检测与防护结合 NIDPS 场景拓展（无线、移动、云计算） 与人工智能结合   入侵检测目前面临的问题 误报和漏报（这应该是亘古不变的话题吧） 基于特征的话滞后，无法有效应对新型入侵 加">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/01/网络入侵检测课件学习/">
+
+
+
+
+
+  <title>网络入侵检测课件学习 | 这是哪儿呢?</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">这是哪儿呢?</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/01/网络入侵检测课件学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZYFZYF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这是哪儿呢?">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网络入侵检测课件学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-01T11:08:02+08:00">
+                2019-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>怎么感觉这个博客里全是学习的笔记了…有点无趣，这不太符合我的初衷哎T_T</p>
+<h1 id="w1-课程概述"><a href="#w1-课程概述" class="headerlink" title="w1-课程概述"></a>w1-课程概述</h1><ul>
+<li>居然还讲大数据和基于SDN的入侵检测，听起来不错</li>
+<li>WannaCry为啥会加这样一个开关呢？</li>
+<li>20世纪以来入侵检测的发展方向<ul>
+<li>检测与防护结合 NIDPS</li>
+<li>场景拓展（无线、移动、云计算）</li>
+<li>与人工智能结合</li>
+</ul>
+</li>
+<li>入侵检测目前面临的问题<ul>
+<li>误报和漏报（这应该是亘古不变的话题吧）</li>
+<li>基于特征的话滞后，无法有效应对新型入侵</li>
+<li>加密报文、假冒IP、NIDS被攻击（草）</li>
+</ul>
+</li>
+</ul>
+<h1 id="w2-网络入侵和攻击"><a href="#w2-网络入侵和攻击" class="headerlink" title="w2-网络入侵和攻击"></a>w2-网络入侵和攻击</h1><ul>
+<li>入侵分为对系统的和对网络的</li>
+<li>网络扫描，用来对发起攻击的目标进行了解<ul>
+<li>主机发现（IP/ICMP）</li>
+<li>端口扫描（nmap工具）<ul>
+<li>逐个对一段端口或指定的端口进行扫描。通过扫描结果可以知道一台计算机上都提供了哪些服务，然后就可以通过所提供的这些服务的己知漏洞就可进行攻击</li>
+</ul>
+</li>
+<li>操作系统检测（同上，一条命令nmap -O + IP 即可）</li>
+<li>漏洞扫描（Nessus扫描软件）</li>
+</ul>
+</li>
+<li>ZMAP的扫描有什么用呢（统计网络流量的信息？）</li>
+<li>Dos攻击<ul>
+<li>拒绝服务攻击Denial of Service<ul>
+<li>攻击机制<ul>
+<li>异常数据：利用协议的漏洞<ul>
+<li>Teardrop攻击：向被攻击者发送多个分片的IP包（IP分片数据包中包括该分片数据包属于哪个数据包以及在数据包中的位置等信息），某些操作系统收到含有重叠偏移的伪造分片数据包时将会出现<a href="https://baike.baidu.com/item/系统崩溃/71286" target="_blank" rel="noopener">系统崩溃</a>、重启等现象</li>
+<li>Ping of death：通过分片传输大于64k的包，导致系统崩溃</li>
+<li>Land 攻击：采用了特别构造的TCP SYN数据包（通常用于开启一个新的连接），使目标机器开启一个源地址与目标地址均为自身<a href="https://baike.baidu.com/item/IP地址" target="_blank" rel="noopener">IP地址</a>的空连接，持续地自我应答，消耗系统资源直至崩溃。这种攻击方法与SYN洪泛攻击并不相同</li>
+</ul>
+</li>
+<li>洪泛型：向目标发送大量数据包</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DDos攻击<ul>
+<li>分布式Dos</li>
+<li>新型DDoS攻击<ul>
+<li>放大DDoS攻击<ul>
+<li><strong>memcache</strong>是一套<a href="https://baike.baidu.com/item/分布式/19276232" target="_blank" rel="noopener">分布式</a>的高速缓存系统，目前被许多网站使用以提升网站的访问速度，尤其对于一些大型的、需要频繁访问<a href="https://baike.baidu.com/item/数据库/103728" target="_blank" rel="noopener">数据库</a>的网站访问速度提升效果十分显著</li>
+<li>UDP反射放大型DDOS攻击只需攻击者向Memcache服务器发送小字节请求，就可以引发服务器将数万倍的响应数据包发送给攻击者，形成灾难级的DDoS攻击（为什么是memcache这么遭难）</li>
+</ul>
+</li>
+<li>Mirai Botnet进行DDoS攻击<ul>
+<li>Botnet 是指采用一种或多种传播手段，将大量主机感染bot程序（<a href="https://baike.baidu.com/item/僵尸程序" target="_blank" rel="noopener">僵尸程序</a>）病毒，从而在控制者和被感染<a href="https://baike.baidu.com/item/主机/455151" target="_blank" rel="noopener">主机</a>之间所形成的一个可一对多控制的网络</li>
+</ul>
+</li>
+<li>IPv6 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>突然想到异常检测能不能不止用来检测入侵，如果能检测出上线的代码的bug就好了<em>(:з」∠)</em></li>
+<li>蠕虫/病毒</li>
+<li>缓冲区溢出攻击</li>
+<li>APT攻击<ul>
+<li>Advanced Persistent Threat：高级持续欺骗</li>
+<li>钓鱼邮件+office宏执行（这是啥）+植入木马+窃取信息</li>
+</ul>
+</li>
+</ul>
+<h1 id="w3-研讨"><a href="#w3-研讨" class="headerlink" title="w3-研讨"></a>w3-研讨</h1><h1 id="w4-入侵检测概述"><a href="#w4-入侵检测概述" class="headerlink" title="w4-入侵检测概述"></a>w4-<strong>入侵检测概述</strong></h1><ul>
+<li>一种动态的监控、预防或抵御系统入侵行为的安全机制</li>
+<li>通用入侵检测理论模型（Denning模型）<ul>
+<li>主题（subjects）、对象（objects）、审计记录（audit records，就像日志一样吧）、简介（profiles这个翻译有点怪<em>(:з」∠)</em>，我感觉老师也是感觉翻译成啥都不合适所以才没写中文的）</li>
+<li>Profiles里有活动的描述，包括统计度量和统计模型<ul>
+<li>统计度量<ul>
+<li>事件计数器：在一个时间段内满足某个属性的审计记录的数量</li>
+<li>间隔计数器：两个相关事件之间的时间间隔</li>
+<li>资源测量：一个时间段内某种动作所消耗的资源</li>
+</ul>
+</li>
+<li>统计模型<ul>
+<li>观察新的$x$是不是异常的</li>
+<li>好多模型…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基于规则的模式匹配系统</li>
+</ul>
+</li>
+<li>入侵检测技术的分类<ul>
+<li>数据源：HIDS vs NIDS （host vs net）<ul>
+<li>基于主机：系统日志、审计信息、系统调用、应用程序日志<ul>
+<li>优点：<ul>
+<li>可以直接访问动作的语义（更易于阻断攻击、更难绕过）</li>
+<li>能够对非网络威胁提供保护（这个是什么意思呢）</li>
+<li>对于加密行为有一定可见性</li>
+<li>性能扩展更容易</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基于网络：原始报文、流级流量信息、SNMP<ul>
+<li>优点：<ul>
+<li>单点部署可以检测很多系统，方便管理</li>
+<li>方便部署</li>
+<li>不必浪费端系统的生产资源</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分析方法：误用检测 vs 异常检测<ul>
+<li>误用检测：<ul>
+<li>Misuse Detection，又称为基于特征的检测？<ul>
+<li>Snort规则（是一个开源的IDS）</li>
+</ul>
+</li>
+<li>优点：有效地发现一致攻击</li>
+<li>缺点：未知攻击；定义变种也很困难</li>
+</ul>
+</li>
+<li>异常检测<ul>
+<li>优点：理论上可以检测未知攻击</li>
+<li>缺点：虚警率较高</li>
+</ul>
+</li>
+<li>不是很理解这两个的区别…</li>
+</ul>
+</li>
+<li>检测方式：实时 vs 非实时</li>
+<li>响应方式：主动 vs 被动<ul>
+<li>主动：检测出入侵后，自动采取相关措施  IDPS就是检测+防护</li>
+<li>被动：仅告警</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="w5-论文研讨"><a href="#w5-论文研讨" class="headerlink" title="w5-论文研讨"></a>w5-论文研讨</h1><h1 id="w6-网络入侵检测"><a href="#w6-网络入侵检测" class="headerlink" title="w6-网络入侵检测"></a>w6-网络入侵检测</h1><ul>
+<li>数据源<ul>
+<li>报文级流量<ul>
+<li>lipcap 函数库</li>
+</ul>
+</li>
+<li>流级流量</li>
+<li>公开数据集<ul>
+<li>KDDCUP 99</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>基于统计<ul>
+<li>统计模型建立profile</li>
+</ul>
+</li>
+<li>基于知识 </li>
+<li>基于机器学习</li>
+</ul>
+</li>
+<li>开始讲Kitsune了（假装我已经看过懂了就跳过吧<em>(:з」∠)</em>）</li>
+</ul>
+<h1 id="w7-开源IDS"><a href="#w7-开源IDS" class="headerlink" title="w7-开源IDS"></a>w7-开源IDS</h1><ul>
+<li>Snort（是一只猪）<ul>
+<li>三种运行模式：读取显示网络数据包、将数据包存到硬盘中、网络流量分析与检测</li>
+<li>四大模块<ul>
+<li>数据包嗅探解码模块</li>
+<li>预处理模块<ul>
+<li>从snort.conf中加载配置</li>
+<li>报文重组预处理器<ul>
+<li>frag3：IP分片重组和攻击检测</li>
+<li>stream：维持TCP流状态，进行会话重组</li>
+</ul>
+</li>
+<li>协议规范化预处理器<ul>
+<li>http_inspect：规范HTTP流（规划URI）</li>
+<li>rpcDecode：规范调用</li>
+</ul>
+</li>
+<li>异常检测预处理器<ul>
+<li>arpspoof：检测ARP欺骗（ARP是从MAC到IP的转换）</li>
+<li>sfportscan：检测端口扫描</li>
+</ul>
+</li>
+<li><ul>
+<li>ARP（从IP到MAC地址的转换协议）欺骗</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>检测模块<ul>
+<li>检测头<ul>
+<li>五种响应机制：Activation（报警并启动另外一个动态规则链）、Dynamic（由其它的规则包调用）、Alert（报警），Pass（忽略），Log（不报警但记录网络流量）</li>
+</ul>
+</li>
+<li>检测规则<ul>
+<li>有点没看懂具体格式，之后再看<em>(:з」∠)</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>报警/日志模块</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Suricata（商标是狐獴）<ul>
+<li>最突出的特点是多线程。它的多线程架构是独一无二的，因为它可以支持高性能的多核和多处理器系统。多线程设计的主要优点是它可以提高网络流量分析的速度和效率，还可以根据处理需求的位置帮助划分IDS / IPS工作负载</li>
+<li>自动协议检测：自动识别网络使用的协议，并应用一定的规则，不管你提供的端口是啥；一定程度上也防止了用户错误</li>
+</ul>
+</li>
+<li>Bro（商标是眼睛，为什么你这么特殊，就像XLNet一样<em>(:з」∠)</em>）<ul>
+<li>最特殊的是Event Engine，根据监测到的网络报文跟踪连接的状态，并产生相应的事件</li>
+<li>有个规则解释器，所以可以写Bro语言？更加灵活</li>
+</ul>
+</li>
+<li>性能比较<ul>
+<li>suricata的CPU利用率好低啊</li>
+</ul>
+</li>
+</ul>
+<h1 id="w8-入侵检测标准化与测评"><a href="#w8-入侵检测标准化与测评" class="headerlink" title="w8-入侵检测标准化与测评"></a>w8-入侵检测标准化与测评</h1><ul>
+<li>标准化<ul>
+<li>各个系统之间的协作、需要与其他系统交换信息，所以得有标准的交互接口</li>
+</ul>
+</li>
+<li>CIDF：Common Intrusion Detection Framework<ul>
+<li>定义了一个通用的入侵检测框架以及各个组件之间通信的协议和API</li>
+<li>gidos: generalized intrusion detection objects</li>
+</ul>
+</li>
+<li>CISL：Common Intrusion Specification Language<ul>
+<li>这是什么语言</li>
+</ul>
+</li>
+<li>IDS协作<ul>
+<li>分析：一个收集数据初步分析、一个深入分析产生结果</li>
+<li>互补：互相弥补对方的覆盖度，然后合并产生结果</li>
+<li>增强：互相纠错</li>
+<li>验证：用另一个来验证第一个的报警是否属实，其实和增强差不多</li>
+<li>调整：根据另一个的报警信息来调整监测阈值之类的？</li>
+<li>响应：根据另一个的告警自动响应</li>
+</ul>
+</li>
+<li>CIDF和IETF IDWG标准化的核心都是入侵告警描述语言，前者类似LISP语言，后者采用XML格式</li>
+<li>测评检测能力（其实就是一个二分类器）<ul>
+<li>AUC</li>
+<li>EER：当FPR和FNR相等时的值，越小越好</li>
+</ul>
+</li>
+</ul>
+<h1 id="放大DDos攻击"><a href="#放大DDos攻击" class="headerlink" title="放大DDos攻击"></a>放大DDos攻击</h1><ul>
+<li>UDP不会握手，所以谁发送请求应答谁，所以伪造正常用户的IP地址，这样服务求就会向正常用户洪泛大量流量，使得正常用户无法正常工作（应答流量比接受流量的意思是：请求可以用很少的话解释，但是回复可能有很多东西）</li>
+<li>从放大器和正常用户的角度来看都无法识别到attacker，本质上还是原来协议设置的漏洞，让伪装变得这么简单</li>
+<li>该论文提出的是从扫描放大器的过程中挖掘attacker的信息（但是scanner要是也做了源地址伪造，不就一点办法都没有了吗）</li>
+<li>对于不同的scanner，hash一下返回的结果，这样根据被attack的服务器就知道这个scanner是有问题的<ul>
+<li>多个scanner</li>
+<li>选择一部分服务器进行攻击</li>
+<li>这个置信度的计算暂时没有理解</li>
+</ul>
+</li>
+<li>如何进行网络定位？如果知道它的位置到三个server的距离，画圆就知道了（即三边测量技术）<ul>
+<li>距离用TTL，但是<ul>
+<li>初始TTL是不知道的（无需知道，只要比较跳数的变化即可）</li>
+<li>路由变化</li>
+<li>网络拓扑未知</li>
+</ul>
+</li>
+<li>验证了attacker是否与scanner使用了同一基础设施</li>
+</ul>
+</li>
+<li>感觉想法和实验还是蛮有意思的<em>(:з」∠)</em></li>
+</ul>
+<h1 id="Mirai-Botnet"><a href="#Mirai-Botnet" class="headerlink" title="Mirai Botnet"></a>Mirai Botnet</h1><ul>
+<li>数量大、增长快、多端口、多设备、多地区</li>
+<li>谁跑Mirai<ul>
+<li>Bot操作者</li>
+<li>DNS</li>
+<li>Password</li>
+</ul>
+</li>
+<li>后面没看懂<em>(:з」∠)</em></li>
+</ul>
+<h1 id="网络流量异常检测研讨"><a href="#网络流量异常检测研讨" class="headerlink" title="网络流量异常检测研讨"></a>网络流量异常检测研讨</h1><ul>
+<li>ASTUTE<ul>
+<li>网络异常的来源<ul>
+<li>奇怪的行为（Dos、端口检测）</li>
+<li>错误配置or行为</li>
+<li>正常（大文件传输）</li>
+</ul>
+</li>
+<li>动机<ul>
+<li>能学到新的异常吗</li>
+<li>如何不需要学习什么是异常就能检测出异常</li>
+</ul>
+</li>
+<li>ASTUTE异常检测新方法（短时间不相关-交通均衡）<ul>
+<li>无需训练</li>
+<li>很好的检测一种well-defined class of 异常</li>
+</ul>
+</li>
+<li>ASTUTE的特点是可以检测很多小流量，而Kalman和Wavelet检测的是少量的大流量 </li>
+<li>均衡模型<ul>
+<li>时间片</li>
+<li>流之间不相关、平均值为0、同分布</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Mining Anomalies Using Traffic Feature Distributions<ul>
+<li>通过流的特征分布来检测异常（例如Dos攻击目的地会集中分布在被攻击的流量上），之前的工作都是基于流量大小来判断的</li>
+<li>分布的区别就用熵，这里用的是样本熵？（意思是我们无法得知特征的准确分布，所以只能采样来获取一个度量）</li>
+<li>使用聚类来对异常进行分类</li>
+<li>主要过程是将entroy检测与volume检测进行对比</li>
+</ul>
+</li>
+</ul>
+<h1 id="基于人工智能的异常检测"><a href="#基于人工智能的异常检测" class="headerlink" title="基于人工智能的异常检测"></a>基于人工智能的异常检测</h1><ul>
+<li>A Deep Learning Approach for Network Intrusion Detection System<ul>
+<li>误用检测和异常检测的区别：<ul>
+<li>误用检测：定义所有的异常行为，将所有其他行为定义为正常，所以理所当然地无法检测到未知的异常</li>
+<li>异常检测：定义正常行为，然后将其他所有行为定义为异常，关键在于定义主题正常活动的“活动简档”</li>
+<li>异常检测有两个困难的地方：<ul>
+<li>一是特征选择</li>
+<li>二是labeled  data 不可获得或者代价太高</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>许多NIDS做了一个特征选择任务从训练数据中的提取了一个相关自己的特征来增加分类的效果<ul>
+<li>特征不是越多越好吗</li>
+</ul>
+</li>
+<li>STL = self-taught learning<ul>
+<li>两步，第一步是UFL，即非监督的特征提取工作，有很多方法例如AutoEncoder，RBM，K-Means；第二部是有监督的分类，这两部分的数据可以是来源不同的，但是也一定会有一定的相关性</li>
+<li>Autoencoder中cost function是均方差+L2系数+KL散度，相当于用隐藏值的value来当提取出来的特征</li>
+</ul>
+</li>
+<li>PCA + SVM是个好思路 </li>
+<li>NSL-KDD相比较KDD Cup Dataset做了两点改进：<ul>
+<li>去除了训练集和测试集中的无用/冗余记录</li>
+<li>把record分了难度？</li>
+</ul>
+</li>
+<li>作者的第二步是用了Softmax 分类方法？（就是直接接一层Softmax层做多分类？也没法问题。。。毕竟要相信前面的工作已经提取出好的特征来了）</li>
+<li>用Autoencoder提取特征和直接一层隐藏层直接接分类的softmax的区别在哪儿？中间这个隐藏层不也相当于是特征提取了吗<ul>
+<li>目的不一样：autoencoder的目的是提取最有用的信息来还原出所有的信息，而隐藏层的目的就是拟合label，所以会有微小的差别？</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/25/2019年8月-日记/" rel="next" title="2019年8月-日记">
+                <i class="fa fa-chevron-left"></i> 2019年8月-日记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZYFZYF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#w1-课程概述"><span class="nav-number">1.</span> <span class="nav-text">w1-课程概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#w2-网络入侵和攻击"><span class="nav-number">2.</span> <span class="nav-text">w2-网络入侵和攻击</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#w3-研讨"><span class="nav-number">3.</span> <span class="nav-text">w3-研讨</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#w4-入侵检测概述"><span class="nav-number">4.</span> <span class="nav-text">w4-入侵检测概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#w5-论文研讨"><span class="nav-number">5.</span> <span class="nav-text">w5-论文研讨</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#w6-网络入侵检测"><span class="nav-number">6.</span> <span class="nav-text">w6-网络入侵检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#w7-开源IDS"><span class="nav-number">7.</span> <span class="nav-text">w7-开源IDS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#w8-入侵检测标准化与测评"><span class="nav-number">8.</span> <span class="nav-text">w8-入侵检测标准化与测评</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#放大DDos攻击"><span class="nav-number">9.</span> <span class="nav-text">放大DDos攻击</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mirai-Botnet"><span class="nav-number">10.</span> <span class="nav-text">Mirai Botnet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络流量异常检测研讨"><span class="nav-number">11.</span> <span class="nav-text">网络流量异常检测研讨</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于人工智能的异常检测"><span class="nav-number">12.</span> <span class="nav-text">基于人工智能的异常检测</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZYFZYF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

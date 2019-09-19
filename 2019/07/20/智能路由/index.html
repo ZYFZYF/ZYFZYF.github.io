@@ -74,6 +74,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="这是哪儿呢?" type="application/atom+xml">
+
 
 
 
@@ -87,7 +89,7 @@
 <meta property="og:site_name" content="这是哪儿呢?">
 <meta property="og:description" content="写在前面老师给了个ppt，照上面的references把论文都下了下来，打算一篇篇看过去最后给老师汇报的时候做个ppt One More Weight is Enough: Toward the Optimal Traffic Engineering with OSPF（居然是学长写的OTZ） 有的没的OSPF是最短路，但是权重不好定啊，好知道的只有链路的容量，所以有一种做法就是把容量的倒数作为权">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-02T15:17:41.813Z">
+<meta property="og:updated_time" content="2019-08-02T15:17:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="智能路由">
 <meta name="twitter:description" content="写在前面老师给了个ppt，照上面的references把论文都下了下来，打算一篇篇看过去最后给老师汇报的时候做个ppt One More Weight is Enough: Toward the Optimal Traffic Engineering with OSPF（居然是学长写的OTZ） 有的没的OSPF是最短路，但是权重不好定啊，好知道的只有链路的容量，所以有一种做法就是把容量的倒数作为权">
@@ -312,7 +314,7 @@
 <p>min-max负载均衡？不太懂实际意义OvO</p>
 <p>比例负载均衡（为什么要提这个奇怪的东西）去掉分母那不就是总为0了吗233333  其实就是为了平衡？</p>
 <p>加权比例负载均衡？（权重越大，这部分的空闲流量必须越少，说明这条路越重要）可是$\beta$的意义是什么呢</p>
-<p>有点看不懂。。。也太复杂了。。。下一篇吧_(:з」∠)_ 这不够智能2333333</p>
+<p>有点看不懂。。。也太复杂了。。。下一篇吧<em>(:з」∠)</em> 这不够智能2333333</p>
 <h1 id="Learning-To-Route"><a href="#Learning-To-Route" class="headerlink" title="Learning To Route"></a>Learning To Route</h1><p>这篇看上去根本没有公式，很棒</p>
 <h2 id="有的没的-1"><a href="#有的没的-1" class="headerlink" title="有的没的"></a>有的没的</h2><p>监督学习的问题在于严重依赖过去经验和未来的联系性，如果需求不是那么规律的话效果就不好<br>所以打算用增强学习来学习需求到配置的一个映射</p>
 <p>没明白增强学习的输出是什么？以及深度增强学习是什么呢？思考状</p>
@@ -324,7 +326,7 @@
 <p>SOFTMIN 将输出降到了|E|个，学一个每条边的权重，然后以这个为权重跑最短路最后决定流量分配 666  但是增强学习到底是怎么学这些奇怪的东西的呢</p>
 <p>这个文章真是简单易懂  因为主要是提idea是吗</p>
 <p>传统方法：如何用知识解决这个问题本身（knowledge-driven)<br>人工智能：如何用经验处理好这个问题（data-driven）</p>
-<h1 id="AuTO-Scaling-Deep-Reinforcement-Learning-for-Datacenter-Scale-Automatic-Traffic-Optimization"><a href="#AuTO-Scaling-Deep-Reinforcement-Learning-for-Datacenter-Scale-Automatic-Traffic-Optimization" class="headerlink" title="AuTO: Scaling Deep Reinforcement Learning for Datacenter-Scale Automatic Traffic Optimization"></a>AuTO: Scaling Deep Reinforcement Learning for Datacenter-Scale Automatic Traffic Optimization</h1><p>看名字和长度感觉好硬_(:з」∠)_</p>
+<h1 id="AuTO-Scaling-Deep-Reinforcement-Learning-for-Datacenter-Scale-Automatic-Traffic-Optimization"><a href="#AuTO-Scaling-Deep-Reinforcement-Learning-for-Datacenter-Scale-Automatic-Traffic-Optimization" class="headerlink" title="AuTO: Scaling Deep Reinforcement Learning for Datacenter-Scale Automatic Traffic Optimization"></a>AuTO: Scaling Deep Reinforcement Learning for Datacenter-Scale Automatic Traffic Optimization</h1><p>看名字和长度感觉好硬<em>(:з」∠)</em></p>
 <h2 id="有的没的-2"><a href="#有的没的-2" class="headerlink" title="有的没的"></a>有的没的</h2><blockquote>
 <p>DRL是将深度学习的感知能力和强化学习的决策能力相结合。简单的说，就是和人类一样，输入感知信息比如视觉，然后通过深度神经网络，直接输出动作，中间没有hand-crafted工作。深度增强学习具备使机器人实现完全自主的学习一种甚至多种技能的潜力。</p>
 </blockquote>
@@ -339,7 +341,7 @@
 </blockquote>
 <p>相当于用DNN来把环境降维？</p>
 <p>value-based方法，需要计算价值函数（value function），根据自己认为的高价值选择行（action）的方法，如Q Learning。<br>policy-based方法，不需要根据value function选择action，可以直接得出policy的方法。</p>
-<p>但是DRL还是没能理解_(:з」∠)_</p>
+<p>但是DRL还是没能理解<em>(:з」∠)</em></p>
 <p>总之数据中心的问题在于要把流量分成K个等级，所以把agent、action、reward带进去就可以了？</p>
 <p>严格优先队列（SPQ）：这是一种最为简单的排队方式，它首先为最高优先级队列进行服务，直到该队列为空，然后是对下一个次高优先级队列服务，以此类推</p>
 <p>数据中心的流调度问题</p>
@@ -364,12 +366,12 @@
 <p>M/M/1模型：一种出生-死亡过程，此随机过程中的每一个状态代表模型中人数的数目。因为模型的队列长度无限且参与人数亦无限，故此状态数目亦为无限。例如状态0表示模型闲置、状态1表示模型有一人在接受服务、状态2表示模型有二人（一人正接受服务、一人在等候），如此类推</p>
 <p>增强学习的好处：能够自适应环境变化</p>
 <p>这篇先过…后面又晕了</p>
-<h1 id="Learning-and-Generating-Distributed-Routing-Protocols-Using-Graph-Based-Deep-Learning"><a href="#Learning-and-Generating-Distributed-Routing-Protocols-Using-Graph-Based-Deep-Learning" class="headerlink" title="Learning and Generating Distributed Routing Protocols Using Graph-Based Deep Learning"></a>Learning and Generating Distributed Routing Protocols Using Graph-Based Deep Learning</h1><p>看起来很短的样子_(:з」∠)_</p>
+<h1 id="Learning-and-Generating-Distributed-Routing-Protocols-Using-Graph-Based-Deep-Learning"><a href="#Learning-and-Generating-Distributed-Routing-Protocols-Using-Graph-Based-Deep-Learning" class="headerlink" title="Learning and Generating Distributed Routing Protocols Using Graph-Based Deep Learning"></a>Learning and Generating Distributed Routing Protocols Using Graph-Based Deep Learning</h1><p>看起来很短的样子<em>(:з」∠)</em></p>
 <h2 id="有的没的-3"><a href="#有的没的-3" class="headerlink" title="有的没的"></a>有的没的</h2><p>max-min fair routing 这个到底是啥？aim at maximizing the minimum allocated bandwidth between all possible sourcedestination pairs in the network</p>
 <p>2333看差批了，看上一篇论文去了</p>
 <p>现有的提升GNN准确性和应用型的两个模型：</p>
 <p>Gated Graph Neural Network： 门控网络，实际上是LSTM的变种，可以解决远距离依赖）</p>
-<p>Edge atention： 注意力机制（之前就一直没看懂_(:з」∠)_ which provides the ability to a neural network to focus on a subset of its inputs） we wish to give the ability to each node to focus only on a subset of its neighborhood</p>
+<p>Edge atention： 注意力机制（之前就一直没看懂<em>(:з」∠)</em> which provides the ability to a neural network to focus on a subset of its inputs） we wish to give the ability to each node to focus only on a subset of its neighborhood</p>
 <p>Given a destination router identifer Rd , each router must locally decide which output interface should be used.这就是分布式路由协议的定义</p>
 <p>0.0看起来很神奇的样机</p>
 <p>需要学会丢包（因此用传输矩阵以p的概率丢失…这也太暴力了）和拓扑变化</p>
@@ -495,7 +497,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -508,7 +510,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -516,6 +518,13 @@
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           

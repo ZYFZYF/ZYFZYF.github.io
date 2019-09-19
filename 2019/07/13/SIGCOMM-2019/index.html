@@ -74,6 +74,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="这是哪儿呢?" type="application/atom+xml">
+
 
 
 
@@ -87,7 +89,7 @@
 <meta property="og:site_name" content="这是哪儿呢?">
 <meta property="og:description" content="写在前面（这四个字仿佛对我很有吸引力） 起因是读硕找导师，导师说给我整理些资料看看，整理了两天（还是被我催了一次）后发给我这篇SIGCOMM 2019的论文，标题是《TeaVaR: Striking the Right Utilization-Availability Balance inWAN Traﬀic Engineering》，总之先试着读读看吧。 （对了，当时和导师面谈的时候导师问我网安">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-19T10:13:00.634Z">
+<meta property="og:updated_time" content="2019-07-19T10:13:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SIGCOMM 2019">
 <meta name="twitter:description" content="写在前面（这四个字仿佛对我很有吸引力） 起因是读硕找导师，导师说给我整理些资料看看，整理了两天（还是被我催了一次）后发给我这篇SIGCOMM 2019的论文，标题是《TeaVaR: Striking the Right Utilization-Availability Balance inWAN Traﬀic Engineering》，总之先试着读读看吧。 （对了，当时和导师面谈的时候导师问我网安">
@@ -303,11 +305,11 @@
         <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>（这四个字仿佛对我很有吸引力）</p>
 <p>起因是读硕找导师，导师说给我整理些资料看看，整理了两天（还是被我催了一次）后发给我这篇SIGCOMM 2019的论文，标题是《TeaVaR: Striking the Right Utilization-Availability Balance in<br>WAN Traﬀic Engineering》，总之先试着读读看吧。</p>
 <p>（对了，当时和导师面谈的时候导师问我网安为什么只拿了个B，我就实话全说了-室友抄我的，所以丢了20分，而最关键的是当时这门课的老师就和我隔了一个工位远hhh 人生真是充满戏剧性）</p>
-<h1 id="有的没的"><a href="#有的没的" class="headerlink" title="有的没的"></a>有的没的</h1><h2 id="introduce"><a href="#introduce" class="headerlink" title="introduce"></a>introduce</h2><p>FFC是啥…，多条线路的低利用性使得发生故障的时候重路由来维持稳定？<br>基于概率的网络模型：出发点是容易出故障的link，分配较少的带宽<br>VaR(x)和CVaR(x)的概念？主要没看懂这个图什么意思…（横轴是loss，纵轴是概率？）<br>​    $VaR_{\beta}(x)$ 代表给出$x$，有$\beta$的概率使得loss在$VaR_{\beta}(x)$以下</p>
-<p>​    $CVaR_{\beta}(x)$ 则是说loss高于$VaR_{\beta}(x)$的情况下的期望loss，可以用来衡量代价吧？<br>我觉得$\beta$给定的情况下，VaR值没有意义，确实CVaR更有意义<br>以优化CVaR为目标，收到了意想不到的效果<br>三个挑战：<br>​     - 公平性<br>​     - 数据平面的快速重路由（遭遇故障时）：这是因为我们基于CVAR的优化形式必须考虑到某些隧道的不可用性可能意味着更多的交通量必须穿越其他隧道   重哈希？有意思<br>​     - 实现计算可伸缩性：先把非凸变成凸优化，再在不怎么影响正确性的情况下缩小（可伸缩性就是说数据规模增大的时候的效果也要一样好）</p>
+<h1 id="有的没的"><a href="#有的没的" class="headerlink" title="有的没的"></a>有的没的</h1><h2 id="introduce"><a href="#introduce" class="headerlink" title="introduce"></a>introduce</h2><p>FFC是啥…，多条线路的低利用性使得发生故障的时候重路由来维持稳定？<br>基于概率的网络模型：出发点是容易出故障的link，分配较少的带宽<br>VaR(x)和CVaR(x)的概念？主要没看懂这个图什么意思…（横轴是loss，纵轴是概率？）<br>​    $VaR<em>{\beta}(x)$ 代表给出$x$，有$\beta$的概率使得loss在$VaR</em>{\beta}(x)$以下</p>
+<p>​    $CVaR<em>{\beta}(x)$ 则是说loss高于$VaR</em>{\beta}(x)$的情况下的期望loss，可以用来衡量代价吧？<br>我觉得$\beta$给定的情况下，VaR值没有意义，确实CVaR更有意义<br>以优化CVaR为目标，收到了意想不到的效果<br>三个挑战：<br>​     - 公平性<br>​     - 数据平面的快速重路由（遭遇故障时）：这是因为我们基于CVAR的优化形式必须考虑到某些隧道的不可用性可能意味着更多的交通量必须穿越其他隧道   重哈希？有意思<br>​     - 实现计算可伸缩性：先把非凸变成凸优化，再在不怎么影响正确性的情况下缩小（可伸缩性就是说数据规模增大的时候的效果也要一样好）</p>
 <h2 id="TEAVAR优化框架"><a href="#TEAVAR优化框架" class="headerlink" title="TEAVAR优化框架"></a>TEAVAR优化框架</h2><p>神奇…我还是不太懂输入输出是啥（英文读起来太难受了OTZ）</p>
 <p>概率失效模型：SRG是什么？有些故障之间是相关的，不是简单的独立事件。但如果两个故障属于不同的SRG，那么就是独立的？所以SRG是神马。考虑故障模型通常以SRG为单位。通常把每个SRG是否故障作为网络的一个状态，而每个tunnel（tunnel好像是link的一个集合吧，相当于通道而不是简单的link链接）是否可用是状态的一个函数。但是flow又是什么概念呢？ flow是源和目的地，由流量$d_i$以及tunnel组成。（咦 这个tunnel是一条还是有可能多条啊  更正：应该是多条） 咦？event和SRG的关系是啥啊  state的单位是event？</p>
-<p>这个涉及到数学公式就有点看不懂了_(:з」∠)_</p>
+<p>这个涉及到数学公式就有点看不懂了<em>(:з」∠)</em></p>
 <p>提出了一个奇怪的势函数，然后发现优化它就能得到目标了？其实也不怎么奇怪，就是挺好奇为什么前面多加了一项$\alpha$ (哦 明白了…只不过从后面那项抠出来了) 所以这显然最小化的就是CVaR啊</p>
 <p>从优化结果给出实际上的带宽分配方案</p>
 <p>场景修剪算法：这个dfs有什么用呢</p>
@@ -348,7 +350,7 @@
 <p>看论文最重要的是什么呢？（看思想？看推导？看论文写作？需要细致到代码吗？看实用性？）</p>
 <p>$\beta$必须事先给出来？不然改一个$\beta$得重算啊</p>
 <p>用Julia实现的？</p>
-<h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>一直在纠结论文的细节，完全没想怎么给别人讲清楚的事情，果然今天被老师批判了一顿。不过有人教训我总是好的，好像有读博的机会呢？还没想好要不要读_(:з」∠)_</p>
+<h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>一直在纠结论文的细节，完全没想怎么给别人讲清楚的事情，果然今天被老师批判了一顿。不过有人教训我总是好的，好像有读博的机会呢？还没想好要不要读<em>(:з」∠)</em></p>
 <p>总之，这篇文章先到这儿吧。如果之后能听到演讲的话再看看能不能有一些新想法。</p>
 
       
@@ -469,7 +471,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -482,7 +484,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -490,6 +492,13 @@
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           

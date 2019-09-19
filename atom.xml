@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>这是哪儿呢?</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-09-07T11:32:36.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>ZYFZYF</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网络入侵检测课件学习</title>
+    <link href="http://yoursite.com/2019/09/01/%E7%BD%91%E7%BB%9C%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E8%AF%BE%E4%BB%B6%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://yoursite.com/2019/09/01/网络入侵检测课件学习/</id>
+    <published>2019-09-01T03:08:02.000Z</published>
+    <updated>2019-09-07T11:32:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>怎么感觉这个博客里全是学习的笔记了…有点无趣，这不太符合我的初衷哎T_T</p><h1 id="w1-课程概述"><a href="#w1-课程概述" class="headerlink" title="w1-课程概述"></a>w1-课程概述</h1><ul><li>居然还讲大数据和基于SDN的入侵检测，听起来不错</li><li>WannaCry为啥会加这样一个开关呢？</li><li>20世纪以来入侵检测的发展方向<ul><li>检测与防护结合 NIDPS</li><li>场景拓展（无线、移动、云计算）</li><li>与人工智能结合</li></ul></li><li>入侵检测目前面临的问题<ul><li>误报和漏报（这应该是亘古不变的话题吧）</li><li>基于特征的话滞后，无法有效应对新型入侵</li><li>加密报文、假冒IP、NIDS被攻击（草）</li></ul></li></ul><h1 id="w2-网络入侵和攻击"><a href="#w2-网络入侵和攻击" class="headerlink" title="w2-网络入侵和攻击"></a>w2-网络入侵和攻击</h1><ul><li>入侵分为对系统的和对网络的</li><li>网络扫描，用来对发起攻击的目标进行了解<ul><li>主机发现（IP/ICMP）</li><li>端口扫描（nmap工具）<ul><li>逐个对一段端口或指定的端口进行扫描。通过扫描结果可以知道一台计算机上都提供了哪些服务，然后就可以通过所提供的这些服务的己知漏洞就可进行攻击</li></ul></li><li>操作系统检测（同上，一条命令nmap -O + IP 即可）</li><li>漏洞扫描（Nessus扫描软件）</li></ul></li><li>ZMAP的扫描有什么用呢（统计网络流量的信息？）</li><li>Dos攻击<ul><li>拒绝服务攻击Denial of Service<ul><li>攻击机制<ul><li>异常数据：利用协议的漏洞<ul><li>Teardrop攻击：向被攻击者发送多个分片的IP包（IP分片数据包中包括该分片数据包属于哪个数据包以及在数据包中的位置等信息），某些操作系统收到含有重叠偏移的伪造分片数据包时将会出现<a href="https://baike.baidu.com/item/系统崩溃/71286" target="_blank" rel="noopener">系统崩溃</a>、重启等现象</li><li>Ping of death：通过分片传输大于64k的包，导致系统崩溃</li><li>Land 攻击：采用了特别构造的TCP SYN数据包（通常用于开启一个新的连接），使目标机器开启一个源地址与目标地址均为自身<a href="https://baike.baidu.com/item/IP地址" target="_blank" rel="noopener">IP地址</a>的空连接，持续地自我应答，消耗系统资源直至崩溃。这种攻击方法与SYN洪泛攻击并不相同</li></ul></li><li>洪泛型：向目标发送大量数据包</li></ul></li></ul></li></ul></li><li>DDos攻击<ul><li>分布式Dos</li><li>新型DDoS攻击<ul><li>放大DDoS攻击<ul><li><strong>memcache</strong>是一套<a href="https://baike.baidu.com/item/分布式/19276232" target="_blank" rel="noopener">分布式</a>的高速缓存系统，目前被许多网站使用以提升网站的访问速度，尤其对于一些大型的、需要频繁访问<a href="https://baike.baidu.com/item/数据库/103728" target="_blank" rel="noopener">数据库</a>的网站访问速度提升效果十分显著</li><li>UDP反射放大型DDOS攻击只需攻击者向Memcache服务器发送小字节请求，就可以引发服务器将数万倍的响应数据包发送给攻击者，形成灾难级的DDoS攻击（为什么是memcache这么遭难）</li></ul></li><li>Mirai Botnet进行DDoS攻击<ul><li>Botnet 是指采用一种或多种传播手段，将大量主机感染bot程序（<a href="https://baike.baidu.com/item/僵尸程序" target="_blank" rel="noopener">僵尸程序</a>）病毒，从而在控制者和被感染<a href="https://baike.baidu.com/item/主机/455151" target="_blank" rel="noopener">主机</a>之间所形成的一个可一对多控制的网络</li></ul></li><li>IPv6 </li></ul></li></ul></li><li>突然想到异常检测能不能不止用来检测入侵，如果能检测出上线的代码的bug就好了<em>(:з」∠)</em></li><li>蠕虫/病毒</li><li>缓冲区溢出攻击</li><li>APT攻击<ul><li>Advanced Persistent Threat：高级持续欺骗</li><li>钓鱼邮件+office宏执行（这是啥）+植入木马+窃取信息</li></ul></li></ul><h1 id="w3-研讨"><a href="#w3-研讨" class="headerlink" title="w3-研讨"></a>w3-研讨</h1><h1 id="w4-入侵检测概述"><a href="#w4-入侵检测概述" class="headerlink" title="w4-入侵检测概述"></a>w4-<strong>入侵检测概述</strong></h1><ul><li>一种动态的监控、预防或抵御系统入侵行为的安全机制</li><li>通用入侵检测理论模型（Denning模型）<ul><li>主题（subjects）、对象（objects）、审计记录（audit records，就像日志一样吧）、简介（profiles这个翻译有点怪<em>(:з」∠)</em>，我感觉老师也是感觉翻译成啥都不合适所以才没写中文的）</li><li>Profiles里有活动的描述，包括统计度量和统计模型<ul><li>统计度量<ul><li>事件计数器：在一个时间段内满足某个属性的审计记录的数量</li><li>间隔计数器：两个相关事件之间的时间间隔</li><li>资源测量：一个时间段内某种动作所消耗的资源</li></ul></li><li>统计模型<ul><li>观察新的$x$是不是异常的</li><li>好多模型…</li></ul></li></ul></li><li>基于规则的模式匹配系统</li></ul></li><li>入侵检测技术的分类<ul><li>数据源：HIDS vs NIDS （host vs net）<ul><li>基于主机：系统日志、审计信息、系统调用、应用程序日志<ul><li>优点：<ul><li>可以直接访问动作的语义（更易于阻断攻击、更难绕过）</li><li>能够对非网络威胁提供保护（这个是什么意思呢）</li><li>对于加密行为有一定可见性</li><li>性能扩展更容易</li></ul></li></ul></li><li>基于网络：原始报文、流级流量信息、SNMP<ul><li>优点：<ul><li>单点部署可以检测很多系统，方便管理</li><li>方便部署</li><li>不必浪费端系统的生产资源</li></ul></li></ul></li></ul></li><li>分析方法：误用检测 vs 异常检测<ul><li>误用检测：<ul><li>Misuse Detection，又称为基于特征的检测？<ul><li>Snort规则（是一个开源的IDS）</li></ul></li><li>优点：有效地发现一致攻击</li><li>缺点：未知攻击；定义变种也很困难</li></ul></li><li>异常检测<ul><li>优点：理论上可以检测未知攻击</li><li>缺点：虚警率较高</li></ul></li><li>不是很理解这两个的区别…</li></ul></li><li>检测方式：实时 vs 非实时</li><li>响应方式：主动 vs 被动<ul><li>主动：检测出入侵后，自动采取相关措施  IDPS就是检测+防护</li><li>被动：仅告警</li></ul></li></ul></li></ul><h1 id="w5-论文研讨"><a href="#w5-论文研讨" class="headerlink" title="w5-论文研讨"></a>w5-论文研讨</h1><h1 id="w6-网络入侵检测"><a href="#w6-网络入侵检测" class="headerlink" title="w6-网络入侵检测"></a>w6-网络入侵检测</h1><ul><li>数据源<ul><li>报文级流量<ul><li>lipcap 函数库</li></ul></li><li>流级流量</li><li>公开数据集<ul><li>KDDCUP 99</li></ul></li></ul></li><li>方法<ul><li>基于统计<ul><li>统计模型建立profile</li></ul></li><li>基于知识 </li><li>基于机器学习</li></ul></li><li>开始讲Kitsune了（假装我已经看过懂了就跳过吧<em>(:з」∠)</em>）</li></ul><h1 id="w7-开源IDS"><a href="#w7-开源IDS" class="headerlink" title="w7-开源IDS"></a>w7-开源IDS</h1><ul><li>Snort（是一只猪）<ul><li>三种运行模式：读取显示网络数据包、将数据包存到硬盘中、网络流量分析与检测</li><li>四大模块<ul><li>数据包嗅探解码模块</li><li>预处理模块<ul><li>从snort.conf中加载配置</li><li>报文重组预处理器<ul><li>frag3：IP分片重组和攻击检测</li><li>stream：维持TCP流状态，进行会话重组</li></ul></li><li>协议规范化预处理器<ul><li>http_inspect：规范HTTP流（规划URI）</li><li>rpcDecode：规范调用</li></ul></li><li>异常检测预处理器<ul><li>arpspoof：检测ARP欺骗（ARP是从MAC到IP的转换）</li><li>sfportscan：检测端口扫描</li></ul></li><li><ul><li>ARP（从IP到MAC地址的转换协议）欺骗</li></ul></li></ul></li><li>检测模块<ul><li>检测头<ul><li>五种响应机制：Activation（报警并启动另外一个动态规则链）、Dynamic（由其它的规则包调用）、Alert（报警），Pass（忽略），Log（不报警但记录网络流量）</li></ul></li><li>检测规则<ul><li>有点没看懂具体格式，之后再看<em>(:з」∠)</em></li></ul></li></ul></li><li>报警/日志模块</li></ul></li></ul></li><li>Suricata（商标是狐獴）<ul><li>最突出的特点是多线程。它的多线程架构是独一无二的，因为它可以支持高性能的多核和多处理器系统。多线程设计的主要优点是它可以提高网络流量分析的速度和效率，还可以根据处理需求的位置帮助划分IDS / IPS工作负载</li><li>自动协议检测：自动识别网络使用的协议，并应用一定的规则，不管你提供的端口是啥；一定程度上也防止了用户错误</li></ul></li><li>Bro（商标是眼睛，为什么你这么特殊，就像XLNet一样<em>(:з」∠)</em>）<ul><li>最特殊的是Event Engine，根据监测到的网络报文跟踪连接的状态，并产生相应的事件</li><li>有个规则解释器，所以可以写Bro语言？更加灵活</li></ul></li><li>性能比较<ul><li>suricata的CPU利用率好低啊</li></ul></li></ul><h1 id="w8-入侵检测标准化与测评"><a href="#w8-入侵检测标准化与测评" class="headerlink" title="w8-入侵检测标准化与测评"></a>w8-入侵检测标准化与测评</h1><ul><li>标准化<ul><li>各个系统之间的协作、需要与其他系统交换信息，所以得有标准的交互接口</li></ul></li><li>CIDF：Common Intrusion Detection Framework<ul><li>定义了一个通用的入侵检测框架以及各个组件之间通信的协议和API</li><li>gidos: generalized intrusion detection objects</li></ul></li><li>CISL：Common Intrusion Specification Language<ul><li>这是什么语言</li></ul></li><li>IDS协作<ul><li>分析：一个收集数据初步分析、一个深入分析产生结果</li><li>互补：互相弥补对方的覆盖度，然后合并产生结果</li><li>增强：互相纠错</li><li>验证：用另一个来验证第一个的报警是否属实，其实和增强差不多</li><li>调整：根据另一个的报警信息来调整监测阈值之类的？</li><li>响应：根据另一个的告警自动响应</li></ul></li><li>CIDF和IETF IDWG标准化的核心都是入侵告警描述语言，前者类似LISP语言，后者采用XML格式</li><li>测评检测能力（其实就是一个二分类器）<ul><li>AUC</li><li>EER：当FPR和FNR相等时的值，越小越好</li></ul></li></ul><h1 id="放大DDos攻击"><a href="#放大DDos攻击" class="headerlink" title="放大DDos攻击"></a>放大DDos攻击</h1><ul><li>UDP不会握手，所以谁发送请求应答谁，所以伪造正常用户的IP地址，这样服务求就会向正常用户洪泛大量流量，使得正常用户无法正常工作（应答流量比接受流量的意思是：请求可以用很少的话解释，但是回复可能有很多东西）</li><li>从放大器和正常用户的角度来看都无法识别到attacker，本质上还是原来协议设置的漏洞，让伪装变得这么简单</li><li>该论文提出的是从扫描放大器的过程中挖掘attacker的信息（但是scanner要是也做了源地址伪造，不就一点办法都没有了吗）</li><li>对于不同的scanner，hash一下返回的结果，这样根据被attack的服务器就知道这个scanner是有问题的<ul><li>多个scanner</li><li>选择一部分服务器进行攻击</li><li>这个置信度的计算暂时没有理解</li></ul></li><li>如何进行网络定位？如果知道它的位置到三个server的距离，画圆就知道了（即三边测量技术）<ul><li>距离用TTL，但是<ul><li>初始TTL是不知道的（无需知道，只要比较跳数的变化即可）</li><li>路由变化</li><li>网络拓扑未知</li></ul></li><li>验证了attacker是否与scanner使用了同一基础设施</li></ul></li><li>感觉想法和实验还是蛮有意思的<em>(:з」∠)</em></li></ul><h1 id="Mirai-Botnet"><a href="#Mirai-Botnet" class="headerlink" title="Mirai Botnet"></a>Mirai Botnet</h1><ul><li>数量大、增长快、多端口、多设备、多地区</li><li>谁跑Mirai<ul><li>Bot操作者</li><li>DNS</li><li>Password</li></ul></li><li>后面没看懂<em>(:з」∠)</em></li></ul><h1 id="网络流量异常检测研讨"><a href="#网络流量异常检测研讨" class="headerlink" title="网络流量异常检测研讨"></a>网络流量异常检测研讨</h1><ul><li>ASTUTE<ul><li>网络异常的来源<ul><li>奇怪的行为（Dos、端口检测）</li><li>错误配置or行为</li><li>正常（大文件传输）</li></ul></li><li>动机<ul><li>能学到新的异常吗</li><li>如何不需要学习什么是异常就能检测出异常</li></ul></li><li>ASTUTE异常检测新方法（短时间不相关-交通均衡）<ul><li>无需训练</li><li>很好的检测一种well-defined class of 异常</li></ul></li><li>ASTUTE的特点是可以检测很多小流量，而Kalman和Wavelet检测的是少量的大流量 </li><li>均衡模型<ul><li>时间片</li><li>流之间不相关、平均值为0、同分布</li></ul></li></ul></li><li>Mining Anomalies Using Traffic Feature Distributions<ul><li>通过流的特征分布来检测异常（例如Dos攻击目的地会集中分布在被攻击的流量上），之前的工作都是基于流量大小来判断的</li><li>分布的区别就用熵，这里用的是样本熵？（意思是我们无法得知特征的准确分布，所以只能采样来获取一个度量）</li><li>使用聚类来对异常进行分类</li><li>主要过程是将entroy检测与volume检测进行对比</li></ul></li></ul><h1 id="基于人工智能的异常检测"><a href="#基于人工智能的异常检测" class="headerlink" title="基于人工智能的异常检测"></a>基于人工智能的异常检测</h1><ul><li>A Deep Learning Approach for Network Intrusion Detection System<ul><li>误用检测和异常检测的区别：<ul><li>误用检测：定义所有的异常行为，将所有其他行为定义为正常，所以理所当然地无法检测到未知的异常</li><li>异常检测：定义正常行为，然后将其他所有行为定义为异常，关键在于定义主题正常活动的“活动简档”</li><li>异常检测有两个困难的地方：<ul><li>一是特征选择</li><li>二是labeled  data 不可获得或者代价太高</li></ul></li></ul></li><li>许多NIDS做了一个特征选择任务从训练数据中的提取了一个相关自己的特征来增加分类的效果<ul><li>特征不是越多越好吗</li></ul></li><li>STL = self-taught learning<ul><li>两步，第一步是UFL，即非监督的特征提取工作，有很多方法例如AutoEncoder，RBM，K-Means；第二部是有监督的分类，这两部分的数据可以是来源不同的，但是也一定会有一定的相关性</li><li>Autoencoder中cost function是均方差+L2系数+KL散度，相当于用隐藏值的value来当提取出来的特征</li></ul></li><li>PCA + SVM是个好思路 </li><li>NSL-KDD相比较KDD Cup Dataset做了两点改进：<ul><li>去除了训练集和测试集中的无用/冗余记录</li><li>把record分了难度？</li></ul></li><li>作者的第二步是用了Softmax 分类方法？（就是直接接一层Softmax层做多分类？也没法问题。。。毕竟要相信前面的工作已经提取出好的特征来了）</li><li>用Autoencoder提取特征和直接一层隐藏层直接接分类的softmax的区别在哪儿？中间这个隐藏层不也相当于是特征提取了吗<ul><li>目的不一样：autoencoder的目的是提取最有用的信息来还原出所有的信息，而隐藏层的目的就是拟合label，所以会有微小的差别？</li></ul></li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;怎么感觉这个博客里全是学习的笔记了…有点无趣，这不太符合我的初衷哎T_T&lt;/p&gt;
+&lt;h1 id=&quot;w1-课程概述&quot;&gt;&lt;a href=&quot;#w1-课程概述&quot; class=&quot;headerlink&quot; title=&quot;w1-课程概述&quot;&gt;&lt;/a&gt;w1-课程概述&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;
+      
+    
+    </summary>
+    
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2019年8月-日记</title>
+    <link href="http://yoursite.com/2019/08/25/2019%E5%B9%B48%E6%9C%88-%E6%97%A5%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/08/25/2019年8月-日记/</id>
+    <published>2019-08-25T09:10:15.000Z</published>
+    <updated>2019-09-06T01:38:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="8-1"><a href="#8-1" class="headerlink" title="8.1"></a>8.1</h2><p>成见真是一件可怕的事情，陈见也是</p><h2 id="8-2"><a href="#8-2" class="headerlink" title="8.2"></a>8.2</h2><p>我老是用自己的思路来揣测别人的想法，真是太不尊重他人了</p><p>不是特别的就不行吗</p><h2 id="8-25"><a href="#8-25" class="headerlink" title="8.25"></a>8.25</h2><p>今天这一系列窒息操作把我头都给亏掉了，不吐不快</p><p>先是续订酒店，我之前偶然发现携程上分开订会比一口气订四五天要省钱，但是当我准备下单的时候却发现了有一条是每日优惠，所以我在想是不是只能订一次，其他都得享受原价（比定价贵50），然后我就放弃了分开订，也是图省事儿，结果后来因为另一件事儿发现要多住一天的时候这个每日优惠是每个订单都可以享受的！！！这么一算大概亏了80，这还只是开始</p><p>然后我又买车票，携程有个指定下铺的功能，15块，但我选了这个的时候发现携程自动帮我选了另一个40的携程优享，看了看和下铺没啥关系我就取消了，结果出来订了个中铺，反复思考了一下觉得中铺还是不能忍受的，退款要亏20那就亏吧，应该是我取消了优享的原因，40+20换个下铺我觉得还可以接受于是就退款+再付款，这其中我给顺丰打了个电话问我预定的寄件怎么还没来取件（预定是3.50取件，那时候已经4.50了，还下着雨，我担心小哥雨行比较艰辛所以没想特别早就催），结果一问发现我个智障寄件人的号码写错了一位，还把正确的寄件号码写到了收件人的号码上wdnmd，这时候携程的预订结果出来了，又给我订了个中铺wdnmd 而且这个退款还不包括那个优享</p><p>我tmd越想越气，头都给我亏掉。事到如今我还要在火车上呆一整天一边享受着舒适的中铺一边回味我的窒息操作，所幸火车票也退了，亏就亏了，买上下午的飞机票走人，正好也好久好久没坐飞机了艹 而且这顺丰快递下单了之后还没法改寄件人的信息，还不知道现在收件小哥还能不能找到我</p><h2 id="8-31"><a href="#8-31" class="headerlink" title="8.31"></a>8.31</h2><p>涛哥好像Spark的bebe啊<em>(:з」∠)</em></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;8-1&quot;&gt;&lt;a href=&quot;#8-1&quot; class=&quot;headerlink&quot; title=&quot;8.1&quot;&gt;&lt;/a&gt;8.1&lt;/h2&gt;&lt;p&gt;成见真是一件可怕的事情，陈见也是&lt;/p&gt;
+&lt;h2 id=&quot;8-2&quot;&gt;&lt;a href=&quot;#8-2&quot; class=&quot;headerlink
+      
+    
+    </summary>
+    
+    
+    
+      <category term="日记" scheme="http://yoursite.com/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何说话的TIPS</title>
+    <link href="http://yoursite.com/2019/08/18/%E5%A6%82%E4%BD%95%E8%AF%B4%E8%AF%9D%E7%9A%84TIPS/"/>
+    <id>http://yoursite.com/2019/08/18/如何说话的TIPS/</id>
+    <published>2019-08-18T09:50:04.000Z</published>
+    <updated>2019-08-30T08:57:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>深感自己不会说话，和别人交流的时候无法显得从容，十分僵硬，因此这里想记录一些平常从别人那里学到的交流技巧？（雾</p><h2 id="问答类"><a href="#问答类" class="headerlink" title="问答类"></a>问答类</h2><ol><li><blockquote><p>Q：秀欧气.jpg<br>A：不用秀也可以领取呢亲</p></blockquote></li><li><blockquote><p>Q：有没有XXX<br>A：没有XXX，你记错了<br>可以用来委婉的表达拒绝？</p></blockquote></li><li><blockquote><p>Q: XXX美女很多，那我去了，岂不是拉低XXX<br>A: 成都又多了一朵花</p></blockquote></li><li><blockquote><p>Q: 我想xxx，可以吗<br>A: 可以想</p></blockquote></li><li></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;深感自己不会说话，和别人交流的时候无法显得从容，十分僵硬，因此这里想记录一些平常从别人那里学到的交流技巧？（雾&lt;/p&gt;
+&lt;h
+      
+    
+    </summary>
+    
+    
+    
+      <category term="日常" scheme="http://yoursite.com/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>异常检测</title>
+    <link href="http://yoursite.com/2019/08/18/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
+    <id>http://yoursite.com/2019/08/18/异常检测/</id>
+    <published>2019-08-18T06:19:10.000Z</published>
+    <updated>2019-08-18T13:17:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>暑假在鹅肠实习，导师又给派任务了<em>(:з」∠)</em> 上班又不敢摸鱼，只能周末肝一肝，勉强度日这样子</p><h1 id="Kitsune-An-Ensemble-of-Autoencoders-for-Online-Network-Intrusion-Detection"><a href="#Kitsune-An-Ensemble-of-Autoencoders-for-Online-Network-Intrusion-Detection" class="headerlink" title="Kitsune: An Ensemble of Autoencoders for Online Network Intrusion Detection"></a>Kitsune: An Ensemble of Autoencoders for Online Network Intrusion Detection</h1><h2 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h2><p>人工智能的解决方法固然好，但是面临的问题是</p><ul><li>需要的资源多，要train模型，很多路由器等没有这个算力或者内存去跑模型</li><li>监督的方式需要对network traffic进行label</li></ul><p>而Kitsume就是这样一个无监督的插件，运行在本地网络上，他可以自动提取网络的pattern，用的是an ensemble of autoencodes</p><p>所以先去学一下autoencoder<em>(:з」∠)</em></p><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul><li>传统方法将NIDS部署在网关上，但这样只能检测到进入和离开的恶意流量，而无法检测到网络本身的恶意流量。因此，分布式NIDS被部署到了一系列路由和网关上</li><li>引入ANN作为入侵检测的分类器后的传统做法：<ul><li>需要expert来收集正样本和负样本</li><li>用强大的CPU或GPU去train</li><li>把train好的模型传到部署了NIDS的设备上</li><li>设备去evaluate当前的网络状况</li></ul></li><li>想把ANN分类器嵌入不贵的路由器中有点不现实：<ul><li>离线处理：很多数据需要传送到远端再运算</li><li>监督学习：只能学到的training set里提到的恶意攻击类型，泛化能力不强，需要一直更新</li><li>高复杂度：ANN复杂度太高，随神经元的增加需要计算的也多</li></ul></li><li>本文提出的方法：<ul><li>在线处理</li><li>无监督：不再需要是否恶意的标签数据，而获取其他meta information（元信息），但是怎么处理呢</li><li>低复杂度：包处理速度必须超过最大包到达速度，换句话说不能让包在等待</li></ul></li><li>（看起来有点牛逼啊）<blockquote><p>日本民间传说中的Kitsune是一种神秘的狐狸般的生物，有许多尾巴，可以模仿不同的形式，并且随着经验增加其力量。 同样，我们的Kitsune有一个小型神经网络（自动编码器）的集合，它们经过训练可以模拟（重建）网络流量模式，并且其性能会逐渐提高。    </p></blockquote></li></ul><h2 id="AutoEncoder"><a href="#AutoEncoder" class="headerlink" title="AutoEncoder"></a>AutoEncoder</h2><ul><li>神经网络的非监督学习，相当于神经网络版的PCA，不仅要降维，甚至降哪些特征都auto提取，相当于加强版PCA吧</li><li><p>三层神经网络：输入层、隐藏层、输出层（输出层与输入层有着相同的结构），想学习的函数其实是$h(x) = x$，但中间这一层hidden layer强行降维了，相当于提取了一层最有用的特征出来</p><blockquote><p>这么做的意义在于我们想发现输入数据中隐含的一些特定的结构，并训练出一种更好的表达输入数据的方法。</p></blockquote></li><li>之所以叫自编码因为它本身做的就是一件自己到自己的映射， 相当于把自己重新编码了一下</li><li>GD和SGD之间的区别：<ul><li>相同点是每次迭代都会更新模型的参数</li><li>区别是GD每次会用到所有训练数据，SGD则只用一条数据来更新（相对而言更随机一点，因为单条样本本身随机性就比较大）</li></ul></li><li>autoencoder就是想要映射的label就是自己，所以也就是无监督的训练了（而这个autoencoder本身和seq2seq中的encoder-decoder模型也没什么关联）</li><li>如果autoencoder在layer size上是镜像的，那么权重也会是镜像的</li><li>autoencoder的用途：产生新文本、过滤图像噪声</li><li>异常检测的使用：<ul><li>训练时：用normal数据更新，并且记录最大的RMSE</li><li>执行时：计算RMSE，发现&gt;记录值*一个敏感系数，就报警</li><li>（emmmmm这样不还是比较鸡肋吗）</li></ul></li><li>复杂度：受限于网络规模，三层七神经元</li></ul><h2 id="KITSUNE"><a href="#KITSUNE" class="headerlink" title="KITSUNE"></a>KITSUNE</h2><p>终于上正菜了<em>(:з」∠)</em></p><ul><li>overview<ul><li>plug-and-play：即插即用（这么厉害啊！</li><li>跑在简单的网络路由器上</li><li>框架由下列部分组成：<ul><li>抓包：用API拿到raw packet（binary）</li><li>解包：用外部工具拿到包的真实数据（meta information）</li><li>特征提取：提取n个特征，有关这个包和包的来源（提取超过100个统计信息（这么多真的来得及吗），这些特征形成了x</li><li>特征映射：创造一个比较小的instance提供给异常检测，学习x-&gt;v的映射</li><li>异常检测：给出v，给出异常结果（仿佛这边才是autoencoder？）</li></ul></li><li>AD部分叫KitNET，有一个主要的参数是输入参数的最大值（这个影响了检测的准确性和速度的平衡，放在后面讨论）</li><li>FM和AD都有两个模式：train和exec，前者更新参数，没有输出；后者不更新参数但是有输出</li></ul></li><li>FE<ul><li>这部分主要是特征工程</li><li>面临的困难是：不同channel的包交错、同一时刻会有很多包、包到达的速度非常快<ul><li>一个naive的方法是每个channel开一个window来持续计算，但是这样需要很多内存并且不方便扩展（可能需要持续的数据：比方说近100个包的平均大小、数量、方差来检测是否有突发之类的异常）</li></ul></li><li>因此本文提出了一种高速特征提取的框架， 动态数据流、增量统计、damped window（不懂什么意思）（这才是好文章…工程方面也这么强）</li><li>之所以不用滑动窗口是因为固定size的window实际上有很多缺陷（例如数目突增的话），而且内存需求也会变大</li><li>所以抛弃旧值的方法就是用damped，阻尼来让之前的数据不断乘一个比例（这和我小学期那个东西有什么区别哦。。。听起来好高大上）</li><li>使用了不同时间域的窗口：比方说100ms、500ms内的；最后能获得115个feature，因此n=115</li></ul></li><li>FM<ul><li>从提取的n个特征构建k个sub-instance，有限制：<ul><li>每个instance不超过m个feature</li><li>单射</li><li>尽可能覆盖X</li><li>能够在线发现</li></ul></li><li>方法是：递增的将n个特征聚类成k个组（具体的距离怎么算没弄清楚，但是看论文是可以自洽的）</li></ul></li><li>AD<ul><li>每一个instance也就是v被送到一个autoencoder上</li><li>output layer处也是一个antuencoder，而它的输入是ensemble layer层每个autoencoder输出的RMSE。</li><li>train-mode 必须运行在normal data上，exec-mode就只前向传播</li></ul></li><li>所以必须人为的一开始就知道normal data长啥样，然后train一段时间，之后再exec？</li></ul><h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><p>先不看了<em>(:з」∠)</em></p><h1 id="Effective-Detection-of-Multimedia-Protocol-Tunneling-using-Machine-Learning"><a href="#Effective-Detection-of-Multimedia-Protocol-Tunneling-using-Machine-Learning" class="headerlink" title="Effective Detection of Multimedia Protocol Tunneling using Machine Learning"></a>Effective Detection of Multimedia Protocol Tunneling using Machine Learning</h1><p>好长<em>(:з」∠)</em></p><p>机器学习在多媒体协议隧道的有效检测？</p><h2 id="问题引入-1"><a href="#问题引入-1" class="headerlink" title="问题引入"></a>问题引入</h2><p>多媒体协议隧道可以把隐蔽数据编码到视频/音频通道中。该项技术的不可观察性指对手无法从streams中分辨这里面是否携带了隐藏信道？</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;暑假在鹅肠实习，导师又给派任务了&lt;em&gt;(:з」∠)&lt;/em&gt; 上班又不敢摸鱼，只能周末肝一肝，勉强度日这样子&lt;/p&gt;
+&lt;h
+      
+    
+    </summary>
+    
+    
+    
+      <category term="论文" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>智能路由</title>
+    <link href="http://yoursite.com/2019/07/20/%E6%99%BA%E8%83%BD%E8%B7%AF%E7%94%B1/"/>
+    <id>http://yoursite.com/2019/07/20/智能路由/</id>
+    <published>2019-07-20T08:09:27.000Z</published>
+    <updated>2019-08-02T15:17:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>老师给了个ppt，照上面的references把论文都下了下来，打算一篇篇看过去最后给老师汇报的时候做个ppt</p><h1 id="One-More-Weight-is-Enough-Toward-the-Optimal-Traffic-Engineering-with-OSPF"><a href="#One-More-Weight-is-Enough-Toward-the-Optimal-Traffic-Engineering-with-OSPF" class="headerlink" title="One More Weight is Enough: Toward the Optimal Traffic Engineering with OSPF"></a>One More Weight is Enough: Toward the Optimal Traffic Engineering with OSPF</h1><p>（居然是学长写的OTZ）</p><h2 id="有的没的"><a href="#有的没的" class="headerlink" title="有的没的"></a>有的没的</h2><p>OSPF是最短路，但是权重不好定啊，好知道的只有链路的容量，所以有一种做法就是把容量的倒数作为权重，但是不可避免的会产生一系列的问题。</p><p><a href="https://blog.csdn.net/aiaiai010101/article/details/84673687" target="_blank" rel="noopener">ECMP介绍</a>说的是Equal Cost Multi Paths， 目标地址相同，源地址不同的话，转发的时候照最短路，想通的时候考虑了多条最短路的情况，实现了一定程度上的负载均衡（是逐跳选择的）</p><blockquote><p>保证OSPF在可扩展性和效率方面的关键特性，是实现基于OSPF的最优交通工程目标的一大挑战。</p></blockquote><p>这句话是关键。</p><p>MLU是啥？Maximum Link Utilization？No 是最小化链路的最大利用率</p><p>min-max负载均衡？不太懂实际意义OvO</p><p>比例负载均衡（为什么要提这个奇怪的东西）去掉分母那不就是总为0了吗233333  其实就是为了平衡？</p><p>加权比例负载均衡？（权重越大，这部分的空闲流量必须越少，说明这条路越重要）可是$\beta$的意义是什么呢</p><p>有点看不懂。。。也太复杂了。。。下一篇吧<em>(:з」∠)</em> 这不够智能2333333</p><h1 id="Learning-To-Route"><a href="#Learning-To-Route" class="headerlink" title="Learning To Route"></a>Learning To Route</h1><p>这篇看上去根本没有公式，很棒</p><h2 id="有的没的-1"><a href="#有的没的-1" class="headerlink" title="有的没的"></a>有的没的</h2><p>监督学习的问题在于严重依赖过去经验和未来的联系性，如果需求不是那么规律的话效果就不好<br>所以打算用增强学习来学习需求到配置的一个映射</p><p>没明白增强学习的输出是什么？以及深度增强学习是什么呢？思考状</p><p>网络似乎总是只考虑容量？不考虑距离、延时什么的嘛？</p><p>优化目标是MLU<br>并且指出：给出需求矩阵，求一个multi-commodity流是一个线性规划问题，是可计算并且效率高的</p><p>但是现在想解决的是不知道需求矩阵的情况下如何定2333 所以是用历史需求学未来规划？神奇，直接跨过了预测需求这一步？ gravity model（看名字是把需求矩阵看成是引力大小？从而将未知数变成每个点的质量和两两之间的距离，似乎比裸的直接预测靠谱一点，相当于在不同点之间建立了联系，但是具体要怎么做呢？） 和 the (probabilistic) bimodal model（一个模型管预测，一个模型管探险？啥意思啊）都是啥啊</p><p>突然想到一个问题？随机数是可以预测的吗？</p><p>总之，这个|V|x|E|输出的强化学习效果貌似也不行？</p><p>SOFTMIN 将输出降到了|E|个，学一个每条边的权重，然后以这个为权重跑最短路最后决定流量分配 666  但是增强学习到底是怎么学这些奇怪的东西的呢</p><p>这个文章真是简单易懂  因为主要是提idea是吗</p><p>传统方法：如何用知识解决这个问题本身（knowledge-driven)<br>人工智能：如何用经验处理好这个问题（data-driven）</p><h1 id="AuTO-Scaling-Deep-Reinforcement-Learning-for-Datacenter-Scale-Automatic-Traffic-Optimization"><a href="#AuTO-Scaling-Deep-Reinforcement-Learning-for-Datacenter-Scale-Automatic-Traffic-Optimization" class="headerlink" title="AuTO: Scaling Deep Reinforcement Learning for Datacenter-Scale Automatic Traffic Optimization"></a>AuTO: Scaling Deep Reinforcement Learning for Datacenter-Scale Automatic Traffic Optimization</h1><p>看名字和长度感觉好硬<em>(:з」∠)</em></p><h2 id="有的没的-2"><a href="#有的没的-2" class="headerlink" title="有的没的"></a>有的没的</h2><blockquote><p>DRL是将深度学习的感知能力和强化学习的决策能力相结合。简单的说，就是和人类一样，输入感知信息比如视觉，然后通过深度神经网络，直接输出动作，中间没有hand-crafted工作。深度增强学习具备使机器人实现完全自主的学习一种甚至多种技能的潜力。</p></blockquote><p>supervised learning目标是generalization，unsupervised learning目标是找潜在结构模式</p><p>现有的DRL延迟过大，short flow 在计算结果出来之前就已经出去了</p><p>实现了两层模型PS和CS，使得计算速度从Weeks到了100ms，并且表现更好</p><p>longtail distribution of datacenter traffic: most of the flows are short flows, but most of the bytes are from long flows.</p><p>所以该文的目的在于如何将DRL应用于datacenter规模的应用</p><p>多级反馈队列 居然还有这个  是为了分级是吧  （Orz 真是多学科交叉啊）妙啊！！！就是因为不好定是short flow还是long flow所以先放到低等级队列，没跑出来再下降等级666666  </p><blockquote><p>MLFQ naturally separates short and long flows</p></blockquote><p>相当于用DNN来把环境降维？</p><p>value-based方法，需要计算价值函数（value function），根据自己认为的高价值选择行（action）的方法，如Q Learning。<br>policy-based方法，不需要根据value function选择action，可以直接得出policy的方法。</p><p>但是DRL还是没能理解<em>(:з」∠)</em></p><p>总之数据中心的问题在于要把流量分成K个等级，所以把agent、action、reward带进去就可以了？</p><p>严格优先队列（SPQ）：这是一种最为简单的排队方式，它首先为最高优先级队列进行服务，直到该队列为空，然后是对下一个次高优先级队列服务，以此类推</p><p>数据中心的流调度问题</p><p>FCT： Flow Completed Time </p><p>这个reward函数设置的怎么看都很奇怪？直接-Tpuf不可以吗？ 或者-Tpuf的平均值？但是想体现和之前的变化？所以必须是相对的？emmm感觉有一丝理解</p><p>不太理解这个数据中心的含义： server端和所谓的big-switch在做什么  是并行计算的吗？ server只有各自的信息？ switch有所有的信息？</p><p>需要延迟不到1ms</p><p>其实是模仿动物的外围和神经系统（鲸了，真就多学科交叉吧）</p><p>MLFQ是这样做的：一开始放在最高队列，然后发送一定数量的bytes，然后就降级。这个是由本地确定的（所以为什么不直接按累计阈值划到指定的队列呢？除非事先不知道flow的流量大小？这个阈值可以由CS来调控）</p><p>PS有两个模式：执行模式，也就是MLFQ；监视模式，收集流大小和完成信息。大流丢给CS去做</p><p>所以CS需要做两件事儿：一是确定PS的阈值，叫做sRLA；二是确定long flow的优先级、route和rate（后两个是啥）</p><p>Unlike prior works that used machine learning in datacenter problems [5, 36, 60], AuTO is unique due to its target - optimization of real values in continuous action space. （凭什么你是特别的逃）</p><p>PG = Policy Gradient实际上over state and action space，对于每一个state，输出了各个action的概率，那么action就得是离散的，所以对于本题目来说没法算</p><p>而DPG则不一样，他针对一个state直接输出了action，所以适合本题？（样本少、policy更明确）</p><blockquote><p>Actor-Critic的训练。我先通俗解释一下。<br>Actor看到游戏目前的state，做出一个action。<br>Critic根据state和action两者，对actor刚才的表现打一个分数。<br>Actor依据critic（评委）的打分，调整自己的策略（actor神经网络参数），争取下次做得更好。<br>Critic根据系统给出的reward（相当于ground truth）和其他评委的打分（critic target）来调整自己的打分策略（critic神经网络参数）。<br>一开始actor随机表演，critic随机打分。但是由于reward的存在，critic评分越来越准，actor表现越来越好。</p><p>作者：nesuhS 链接：<a href="https://www.zhihu.com/question/56692640/answer/157280972" target="_blank" rel="noopener">https://www.zhihu.com/question/56692640/answer/157280972</a></p></blockquote><p>辣么，DDPG又是啥-&gt;需要知道DQN的知识-&gt;记忆库(Experience replay)</p><p>deterministic:代表是确定性的策略<br>stochastic:是概率策略，有些时候是有好处的</p><p>idle rate: 空转率</p><p>M/M/1模型：一种出生-死亡过程，此随机过程中的每一个状态代表模型中人数的数目。因为模型的队列长度无限且参与人数亦无限，故此状态数目亦为无限。例如状态0表示模型闲置、状态1表示模型有一人在接受服务、状态2表示模型有二人（一人正接受服务、一人在等候），如此类推</p><p>增强学习的好处：能够自适应环境变化</p><p>这篇先过…后面又晕了</p><h1 id="Learning-and-Generating-Distributed-Routing-Protocols-Using-Graph-Based-Deep-Learning"><a href="#Learning-and-Generating-Distributed-Routing-Protocols-Using-Graph-Based-Deep-Learning" class="headerlink" title="Learning and Generating Distributed Routing Protocols Using Graph-Based Deep Learning"></a>Learning and Generating Distributed Routing Protocols Using Graph-Based Deep Learning</h1><p>看起来很短的样子<em>(:з」∠)</em></p><h2 id="有的没的-3"><a href="#有的没的-3" class="headerlink" title="有的没的"></a>有的没的</h2><p>max-min fair routing 这个到底是啥？aim at maximizing the minimum allocated bandwidth between all possible sourcedestination pairs in the network</p><p>2333看差批了，看上一篇论文去了</p><p>现有的提升GNN准确性和应用型的两个模型：</p><p>Gated Graph Neural Network： 门控网络，实际上是LSTM的变种，可以解决远距离依赖）</p><p>Edge atention： 注意力机制（之前就一直没看懂<em>(:з」∠)</em> which provides the ability to a neural network to focus on a subset of its inputs） we wish to give the ability to each node to focus only on a subset of its neighborhood</p><p>Given a destination router identifer Rd , each router must locally decide which output interface should be used.这就是分布式路由协议的定义</p><p>0.0看起来很神奇的样机</p><p>需要学会丢包（因此用传输矩阵以p的概率丢失…这也太暴力了）和拓扑变化</p><p>所以到底啥事冷启动、啥是热启动</p><h1 id="Routing-or-Computing-The-Paradigm-Shift-Towards-Intelligent-Computer-Network-Packet-Transmission-Based-on-Deep-Learning"><a href="#Routing-or-Computing-The-Paradigm-Shift-Towards-Intelligent-Computer-Network-Packet-Transmission-Based-on-Deep-Learning" class="headerlink" title="Routing or Computing? The Paradigm Shift Towards Intelligent Computer Network Packet Transmission Based on Deep Learning"></a>Routing or Computing? The Paradigm Shift Towards Intelligent Computer Network Packet Transmission Based on Deep Learning</h1><p>好长啊不想看TAT 看看INTRODUCTION算了</p><h2 id="有的没的-4"><a href="#有的没的-4" class="headerlink" title="有的没的"></a>有的没的</h2><p>不想看了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;老师给了个ppt，照上面的references把论文都下了下来，打算一篇篇看过去最后给老师汇报的时候做个ppt&lt;/p&gt;
+&lt;h
+      
+    
+    </summary>
+    
+    
+    
+      <category term="论文" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2019年7月 日记</title>
+    <link href="http://yoursite.com/2019/07/14/2019%E5%B9%B47%E6%9C%88-%E6%97%A5%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/07/14/2019年7月-日记/</id>
+    <published>2019-07-14T06:49:34.000Z</published>
+    <updated>2019-08-25T09:09:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="7-10"><a href="#7-10" class="headerlink" title="7.10"></a>7.10</h2><blockquote><p>敏感的人仿佛比一般人多了很多触手-他们有丰富的器官可以感知周围的信息，察觉他人的情感，但同时，他们也容易插手别人的间隙，做出不必要的思考与行动。换句话说，容易让别人觉得麻烦。</p></blockquote><h2 id="7-12"><a href="#7-12" class="headerlink" title="7.12"></a>7.12</h2><p>今天和yz吃饭，听了一些关于性别认知障碍的事情，晚上就梦见xs变成4号床舍友了，早上还给我做早饭吃，感觉自己就要弯了。正打算在梦里把这事儿给yz说，突然梦就醒了。往床下看了看发现4号床室友已经在光着膀子打游戏了，凸。残念だ。</p><h2 id="7-13"><a href="#7-13" class="headerlink" title="7.13"></a>7.13</h2><blockquote><p>当你急着奔向未来的时候，说明你已经不喜欢现在了。</p><p>舞动人生-正因为把模糊而微弱的光打向人生整体，所以才能够看到过去和未来。但是，如果把强烈的聚光灯对准“此时此刻”，那就会既看不到过去，也看不到未来<br>​                                                        —《被讨厌的勇气》</p></blockquote><h2 id="7-16"><a href="#7-16" class="headerlink" title="7.16"></a>7.16</h2><p>假设你做了一小时运动之后去吃了一顿大餐，那你到底是白运动了还是白吃了一顿大餐呢？</p><h2 id="7-17"><a href="#7-17" class="headerlink" title="7.17"></a>7.17</h2><p>昨晚发生了一件让我万分纠结又异常惊喜的小事。哼，真是有趣的女人。</p><blockquote><p>你就不想努力一下吗<br>怎么可能努力？因为，因为我不想付出任何努力，希望他喜欢最本真的我<br>​                                                —《女子高中生的虚度日常》</p></blockquote><h2 id="7-18"><a href="#7-18" class="headerlink" title="7.18"></a>7.18</h2><p>京阿尼被烧了。</p><h2 id="7-21"><a href="#7-21" class="headerlink" title="7.21"></a>7.21</h2><blockquote><p>你不是我，怎知我走过的路，心中的苦与乐<br>​                                                — 列夫·托尔斯泰</p></blockquote><p>做想做的，别想太多</p><h2 id="7-22"><a href="#7-22" class="headerlink" title="7.22"></a>7.22</h2><p>昨天做梦梦见：</p><blockquote><p>某人发票圈：除了玩ow的，XXXXX<br>导师和我说：你不适合读博</p></blockquote><p>刷牙的时候想到这个梦就想笑，既无奈又真实。</p><p>早用 Lua + Python 就完事儿了呢，搞这么多花里胡哨的干嘛</p><h2 id="7-24"><a href="#7-24" class="headerlink" title="7.24"></a>7.24</h2><p>到底是哪个正人君子100%好人整天站我背后指责我？</p><h2 id="7-25"><a href="#7-25" class="headerlink" title="7.25"></a>7.25</h2><p>昨晚做了个噩梦：梦见某人和我说你不要再和我说话了。然后就被吓醒了</p><h2 id="7-26"><a href="#7-26" class="headerlink" title="7.26"></a>7.26</h2><p>逃避，逃避，逃避</p><p>睡觉是逃避现实的唯一方法</p><p>我现在只想逃避</p><p>睁开眼的一瞬间又要面对现实</p><p>逃避可耻但有用。不知为何突然想到这个</p><h2 id="7-27"><a href="#7-27" class="headerlink" title="7.27"></a>7.27</h2><p>自己究竟想要怎样的一种生活呢？</p><p>离某些东西越来越远</p><h2 id="7-28"><a href="#7-28" class="headerlink" title="7.28"></a>7.28</h2><p>哪吒还是非常好看的，感觉中国动画的思路是对的。抓动画电影这一方向而不是周更动画的方向（国内没有卖光盘的市场，单靠视频网站的会员也不现实），而且电影就要考虑到受众的问题，这一点来说将中国特色的古代神话故事改编这一题材是完全符合市场的：老少皆知。同时改编的也都非常不错：大圣、白蛇、哪吒都是这个思路（大护法是个例外），而且很多地方致敬原始版本会让人觉得特别有亲切感，比方说哪吒里最后的三头六臂当时看的时候完全被震撼到了。总之，希望哪吒的票房能越多越好，给之后的中国动画的发展提供思路和方向。</p><h2 id="7-29"><a href="#7-29" class="headerlink" title="7.29"></a>7.29</h2><p>其实我不讨厌雨，有死才有生</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;7-10&quot;&gt;&lt;a href=&quot;#7-10&quot; class=&quot;headerlink&quot; title=&quot;7.10&quot;&gt;&lt;/a&gt;7.10&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;敏感的人仿佛比一般人多了很多触手-他们有丰富的器官可以感知周围的信息，察觉他人的情感，但同时，他们
+      
+    
+    </summary>
+    
+    
+    
+      <category term="日记" scheme="http://yoursite.com/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SIGCOMM 2019</title>
+    <link href="http://yoursite.com/2019/07/13/SIGCOMM-2019/"/>
+    <id>http://yoursite.com/2019/07/13/SIGCOMM-2019/</id>
+    <published>2019-07-13T05:34:31.000Z</published>
+    <updated>2019-07-19T10:13:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>（这四个字仿佛对我很有吸引力）</p><p>起因是读硕找导师，导师说给我整理些资料看看，整理了两天（还是被我催了一次）后发给我这篇SIGCOMM 2019的论文，标题是《TeaVaR: Striking the Right Utilization-Availability Balance in<br>WAN Traﬀic Engineering》，总之先试着读读看吧。</p><p>（对了，当时和导师面谈的时候导师问我网安为什么只拿了个B，我就实话全说了-室友抄我的，所以丢了20分，而最关键的是当时这门课的老师就和我隔了一个工位远hhh 人生真是充满戏剧性）</p><h1 id="有的没的"><a href="#有的没的" class="headerlink" title="有的没的"></a>有的没的</h1><h2 id="introduce"><a href="#introduce" class="headerlink" title="introduce"></a>introduce</h2><p>FFC是啥…，多条线路的低利用性使得发生故障的时候重路由来维持稳定？<br>基于概率的网络模型：出发点是容易出故障的link，分配较少的带宽<br>VaR(x)和CVaR(x)的概念？主要没看懂这个图什么意思…（横轴是loss，纵轴是概率？）<br>​    $VaR<em>{\beta}(x)$ 代表给出$x$，有$\beta$的概率使得loss在$VaR</em>{\beta}(x)$以下</p><p>​    $CVaR<em>{\beta}(x)$ 则是说loss高于$VaR</em>{\beta}(x)$的情况下的期望loss，可以用来衡量代价吧？<br>我觉得$\beta$给定的情况下，VaR值没有意义，确实CVaR更有意义<br>以优化CVaR为目标，收到了意想不到的效果<br>三个挑战：<br>​     - 公平性<br>​     - 数据平面的快速重路由（遭遇故障时）：这是因为我们基于CVAR的优化形式必须考虑到某些隧道的不可用性可能意味着更多的交通量必须穿越其他隧道   重哈希？有意思<br>​     - 实现计算可伸缩性：先把非凸变成凸优化，再在不怎么影响正确性的情况下缩小（可伸缩性就是说数据规模增大的时候的效果也要一样好）</p><h2 id="TEAVAR优化框架"><a href="#TEAVAR优化框架" class="headerlink" title="TEAVAR优化框架"></a>TEAVAR优化框架</h2><p>神奇…我还是不太懂输入输出是啥（英文读起来太难受了OTZ）</p><p>概率失效模型：SRG是什么？有些故障之间是相关的，不是简单的独立事件。但如果两个故障属于不同的SRG，那么就是独立的？所以SRG是神马。考虑故障模型通常以SRG为单位。通常把每个SRG是否故障作为网络的一个状态，而每个tunnel（tunnel好像是link的一个集合吧，相当于通道而不是简单的link链接）是否可用是状态的一个函数。但是flow又是什么概念呢？ flow是源和目的地，由流量$d_i$以及tunnel组成。（咦 这个tunnel是一条还是有可能多条啊  更正：应该是多条） 咦？event和SRG的关系是啥啊  state的单位是event？</p><p>这个涉及到数学公式就有点看不懂了<em>(:з」∠)</em></p><p>提出了一个奇怪的势函数，然后发现优化它就能得到目标了？其实也不怎么奇怪，就是挺好奇为什么前面多加了一项$\alpha$ (哦 明白了…只不过从后面那项抠出来了) 所以这显然最小化的就是CVaR啊</p><p>从优化结果给出实际上的带宽分配方案</p><p>场景修剪算法：这个dfs有什么用呢</p><p>这一两页就结束了？就开始评估算法的效果了？</p><h2 id="验证结果"><a href="#验证结果" class="headerlink" title="验证结果"></a>验证结果</h2><p> Weibull distribution：韦伯分布（用这个来拟合失效的概率） 为什么选择这个概率分布呢（<a href="https://baike.baidu.com/item/%E5%8F%AF%E9%9D%A0%E6%80%A7%E5%88%86%E6%9E%90/12653285" target="_blank" rel="noopener">可靠性分析</a>和寿命检验的理论基础）<br> 通道选择：oblivious paths, link-disjoint paths, and k-shortest paths<br> 遗忘路径、链接不相交路径和k-最短路径，前者效果最好</p><h3 id="吞吐量和可用性"><a href="#吞吐量和可用性" class="headerlink" title="吞吐量和可用性"></a>吞吐量和可用性</h3><p> 对比的算法：</p><ul><li>SMORE：不明确保证可用性的情况下将最大链路利用率降至最低？？？不保证可用性还降利用率，这是在想啥？</li><li>FFC：最大化吞吐量，还考虑了失败</li><li>MaxMin：最大化每个用户的最小带宽（为了保证公平吗）</li><li>TEAVAR：在给一个概率的情况下，最小化CVaR</li></ul><p>比较的项</p><ul><li>先是网络需求量增加时的可用性对比：可用性是用完全满足的demand除以总共的demand（有点奇怪思考脸）  增大需求量直至每个拓扑至少24个需求矩阵（需求矩阵is what？） 先是横向对比，然后是纵向对比（问题是这时候没有可用性作为输入，TEAVAR如何工作呢，难不成二分吗）</li><li>在不放大网络的情况下 修改可用性需求看达到的吞吐量，TEAVAR是照常理来，而其他算法是原来的算法逼近</li><li>与FFC比较允许带宽，FFC太粗粒度了，只有k可以调整，但是可用性差别很大</li><li>tunnel选择算法的影响：oblivious routing tunnel selection 更好</li></ul><h3 id="概率估计的鲁棒性"><a href="#概率估计的鲁棒性" class="headerlink" title="概率估计的鲁棒性"></a>概率估计的鲁棒性</h3><p>wtf?<br>结论是就算的估计误差大，结果影响也不大倒是OTZ  低于线性增长<br>不过这个概率估计指的是估计谁呢（网络失败）</p><h3 id="场景修剪的敏感度"><a href="#场景修剪的敏感度" class="headerlink" title="场景修剪的敏感度"></a>场景修剪的敏感度</h3><p>大概就是推出场景修剪大幅度降低了数据范围但是正确率影响不大？<br>喔  场景修剪就是把场景出现概率小于cutoff的节点给去掉对吧？然后看剩下的节点的出现概率之和就是覆盖率了<br>emmm</p><h2 id="讨论框架的可拓展性"><a href="#讨论框架的可拓展性" class="headerlink" title="讨论框架的可拓展性"></a>讨论框架的可拓展性</h2><ul><li>应对需求不确定性</li><li>学习失败的概率</li><li>控制数据平面故障？</li><li>数据范围加大</li><li>服务优先级？仍然需要这个工作</li></ul><h1 id="看完之后仍存在的问题"><a href="#看完之后仍存在的问题" class="headerlink" title="看完之后仍存在的问题"></a>看完之后仍存在的问题</h1><p><del>SRG和event的关系，可能需要看SRG相关的论文才能知道（看了百度是shared risk group意思是要么都出问题，要么都不出问题？比如埋在同一个地沟或管道的链路或光纤）那这个问题就解决了</del>但我觉得SRG还是不好定义</p><p>一个time epoch里面不考虑传输时间的吗 比方说错开时间就可以让总流量“超过”负载了<br>实用性（如何实现呢？这么大一个线性规划）</p><p>Oblivious Routing是啥？无意识路由是在每对节点（或一组流）之间选择一个（注意是一个吗？）路由的问题，而不知道每对节点之间的流量或需求，其目标是最小化图中任何边上的最大拥塞。（因为不知道每对节点之间要走的流量所以是无意识？那这样需求不一样的话岂不是会有瑕疵？边上的阻塞就是会被tunnel经过的次数吧？）</p><p>link-disjoint 网络中给定的一对源节点和目标节点之间的路径，如果它们没有公共（即重叠）链接，则称为链路不相交；如果除了源节点和目标节点之外，它们没有公共节点，则称为节点不相交。</p><p>之所以TEAVAR在无提示路径上表现好也是因为无提示路径考虑到了过度使用链路的问题，而k短路会有很多相交的。而链接不相交可能会使得路径过于分散？（总之无提示和链接不相交肯定有不小的区别）链接不相交会使得取出的路径偏少？从而利用率可能很低？</p><p>FFC又叫FEC，就是事先考虑错误的控制，而不需要重新传输/报告错误（感觉和海明码差不多）</p><p>我觉得这个思路还是挺新颖的，把金融领域的这样一个简单的思想融入到流量分配上（就像心理学上的注意力机制在自然语言处理中的应用上）</p><p>再细节的可能要看看代码才能理解，这个分配方案的意思是肯定不会满足所有需求吗？这对应用不是很不友好吗？还是说这个其实是在一定的概率下，保证每个flow有多少的带宽（不对啊。。。拿这样最好情况都无法全部满足） 这个点我无论如何也绕不过去</p><p>怎么混和啊？比方说两个user的可用性要求不一样</p><p>看论文最重要的是什么呢？（看思想？看推导？看论文写作？需要细致到代码吗？看实用性？）</p><p>$\beta$必须事先给出来？不然改一个$\beta$得重算啊</p><p>用Julia实现的？</p><h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>一直在纠结论文的细节，完全没想怎么给别人讲清楚的事情，果然今天被老师批判了一顿。不过有人教训我总是好的，好像有读博的机会呢？还没想好要不要读<em>(:з」∠)</em></p><p>总之，这篇文章先到这儿吧。如果之后能听到演讲的话再看看能不能有一些新想法。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;（这四个字仿佛对我很有吸引力）&lt;/p&gt;
+&lt;p&gt;起因是读硕找导师，导师说给我整理些资料看看，整理了两天（还是被我催了一次）后发
+      
+    
+    </summary>
+    
+    
+    
+      <category term="论文" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>写在前面</title>
+    <link href="http://yoursite.com/2019/07/13/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/"/>
+    <id>http://yoursite.com/2019/07/13/写在前面/</id>
+    <published>2019-07-13T05:27:40.000Z</published>
+    <updated>2019-07-18T12:07:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="why"><a href="#why" class="headerlink" title="why"></a>why</h1><p>之前乐观团体的时候有一个任务是要画出自己未来的人生，当时的我左思右想也不知道在我有了家庭、有了孩子之后还会做什么。但听到了别人的想法，要把自己的人生经历写成书，或者讲给后辈听，忽然觉得是个不错的选择。现在发生的这些事情或者脑子的想法对我来说是很宝贵的东西，如果很快遗忘了很可惜，而且说不定在未来想起可能会有另一种感觉（或者微微一笑），而我又是个记性不太好的人，所以还是想恢复写博客的习惯。<br>不知道五年后、十年后、三十年后的我再看到我现在写的东西时，到底是一种什么样的心情呢？具体我不知道，反正应该会很有趣。</p><h1 id="what"><a href="#what" class="headerlink" title="what"></a>what</h1><p>主要偏日常和感悟，可能包括读书、观影、补番之类的，还可能包括读论文啥的。</p><h1 id="how-often"><a href="#how-often" class="headerlink" title="how often"></a>how often</h1><p>随性更，按我的性格，如果强迫我日更/周更结果就会变成断更。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;why&quot;&gt;&lt;a href=&quot;#why&quot; class=&quot;headerlink&quot; title=&quot;why&quot;&gt;&lt;/a&gt;why&lt;/h1&gt;&lt;p&gt;之前乐观团体的时候有一个任务是要画出自己未来的人生，当时的我左思右想也不知道在我有了家庭、有了孩子之后还会做什么。但听到了别人的想法
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
