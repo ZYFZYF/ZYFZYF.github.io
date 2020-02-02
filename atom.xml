@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-04T13:02:16.553Z</updated>
+  <updated>2020-02-02T03:03:55.754Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>2020年2月-日记</title>
+    <link href="http://yoursite.com/2020/02/02/2020%E5%B9%B42%E6%9C%88-%E6%97%A5%E8%AE%B0/"/>
+    <id>http://yoursite.com/2020/02/02/2020年2月-日记/</id>
+    <published>2020-02-02T01:50:06.000Z</published>
+    <updated>2020-02-02T03:03:55.754Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="20200201"><a href="#20200201" class="headerlink" title="20200201"></a>20200201</h2><ul><li>今天居然和qz玩了三局，虽说一直划水但是三局连胜，可能这就是锦鲤特质吧🤦‍♀️，最可惜的就是没开语音_(:з」∠)_</li></ul><h2 id="20200202"><a href="#20200202" class="headerlink" title="20200202"></a>20200202</h2><ul><li><p>怎么用GAN做一个生成面条式的图像的工具呢？（还是说直接做风格迁移）</p></li><li><p>这个用GAN来生成中间图像的，如何用它来做笑容逐渐变态的应用呢？（首先我们得知道生成这些图像sample的vector是啥？）</p></li><li><p>GAN的思路也太强了，这么简单，又易懂，还强大</p></li><li>Structured Learning方法<ul><li>Bottom up，这个就是generator<ul><li>考虑component之间的correlation比较困难</li></ul></li><li>Top down，这个就是discriminator<ul><li>考虑correlation比较容易，例如卷积核就可以用来判断是否存在孤立点</li></ul></li><li>GAN Training<ul><li><img src="GAN.png" alt="gan"></li></ul></li></ul></li><li>这个VAE的问题是什么</li><li><img src="VAE.png" alt="vae"></li><li><img src="GAN_RESULT.png" alt="gan_result"></li><li>VAE的效果比较稳，但最好效果要差一截</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;20200201&quot;&gt;&lt;a href=&quot;#20200201&quot; class=&quot;headerlink&quot; title=&quot;20200201&quot;&gt;&lt;/a&gt;20200201&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;今天居然和qz玩了三局，虽说一直划水但是三局连胜，可能这就是锦鲤特质吧🤦‍♀️
+      
+    
+    </summary>
+    
+    
+    
+      <category term="日记" scheme="http://yoursite.com/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2019年11月-日记</title>
     <link href="http://yoursite.com/2019/11/04/2019%E5%B9%B411%E6%9C%88-%E6%97%A5%E8%AE%B0/"/>
     <id>http://yoursite.com/2019/11/04/2019年11月-日记/</id>
     <published>2019-11-04T12:58:57.000Z</published>
-    <updated>2019-11-04T13:02:16.553Z</updated>
+    <updated>2019-11-28T08:44:51.390Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="11-4"><a href="#11-4" class="headerlink" title="11.4"></a>11.4</h2><p>我居然这么久没写日记了…</p><p>这段时间发生的事儿太多了，主要还是感情方面的事情</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="11-4"><a href="#11-4" class="headerlink" title="11.4"></a>11.4</h2><p>我居然这么久没写日记了…</p><p>这段时间发生的事儿太多了，主要还是感情方面的事情</p><p>回想起来，我是做了一件多么残忍的事情？</p><h2 id="11-12"><a href="#11-12" class="headerlink" title="11.12"></a>11.12</h2><p>焦虑，还是焦虑</p><p>无时无刻不在焦虑</p><p>我觉得我真的需要心理咨询了</p><h1 id="11-14"><a href="#11-14" class="headerlink" title="11.14"></a>11.14</h1><p>能不能不要对自己要求那么严格</p><p>能不能降低对自己的要求</p><p>我该怎么办才好</p><p>焦虑，焦虑，满脑子都是焦虑</p><h1 id="11-28"><a href="#11-28" class="headerlink" title="11.28"></a>11.28</h1><p>我到底还喜不喜欢她？</p>]]></content>
     
     <summary type="html">
     
@@ -31,7 +56,7 @@
       
         &lt;h2 id=&quot;11-4&quot;&gt;&lt;a href=&quot;#11-4&quot; class=&quot;headerlink&quot; title=&quot;11.4&quot;&gt;&lt;/a&gt;11.4&lt;/h2&gt;&lt;p&gt;我居然这么久没写日记了…&lt;/p&gt;
 &lt;p&gt;这段时间发生的事儿太多了，主要还是感情方面的事情&lt;/p&gt;
-
+&lt;p&gt;回想起来，我是做了一
       
     
     </summary>
