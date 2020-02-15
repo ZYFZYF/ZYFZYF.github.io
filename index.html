@@ -331,6 +331,180 @@
 <li><img src="VAE.png" alt="vae"></li>
 <li><img src="GAN_RESULT.png" alt="gan_result"></li>
 <li>VAE的效果比较稳，但最好效果要差一截</li>
+<li>VAE-GAN里面相当于用GAN的Discriminator来取代loss的计算，原来的loss计算过于直接，这里相当于用一个神经网络来算loss（也不是？）</li>
+</ul>
+<h2 id="20200203"><a href="#20200203" class="headerlink" title="20200203"></a>20200203</h2><ul>
+<li>今晚qz又邀了我，可惜刚划了一把手机就重启了🤦‍♀️  而且再次感觉我憨憨的，明明应该多夸夸她的！我在想什么</li>
+</ul>
+<h2 id="20200204"><a href="#20200204" class="headerlink" title="20200204"></a>20200204</h2><ul>
+<li>又不开心，玩游戏找不到乐趣（主要还是玩什么都蔡QAQ），然后很容易不开心TAT，简直了</li>
+<li>以后要咋办嘛</li>
+<li>LSTM-Based Encoder-Decoder模型也可以用来做重构（这样是不是可以记住更长时间的信息）</li>
+<li>今天做了啥呢，我甚至害怕上线被邀请玩游戏？我就这么在乎自己表现不好么，逃避有什么用呢，每个人都有自己的想法，为什么老是害怕自己的想法不对呢</li>
+</ul>
+<h2 id="20200205"><a href="#20200205" class="headerlink" title="20200205"></a>20200205</h2><ul>
+<li>TAT</li>
+<li>yahoo的Generic and Scalable Framework for Automated Time-series Anomaly Detection里公开了一个数据集</li>
+<li>Unsupervised real-time anomaly detection for streaming data里提供了一个NAB数据集，专门为streaming data准备的</li>
+<li>这个HTM是什么啊，感觉很革命性的样子，可惜我没有耐心，也没有时间，更没有心情细细读下去🤦‍♀️</li>
+<li>qz回复我好冷淡啊（可能是感冒比较严重？）</li>
+</ul>
+<h2 id="20200206"><a href="#20200206" class="headerlink" title="20200206"></a>20200206</h2><ul>
+<li>一个想法，可不可以用LSTM学出一个feature，然后重构这个feature？</li>
+<li>为什么不增加autoencoder的层数？</li>
+<li>今天自己玩了玩王者，难道还是一个人玩更好玩？我是在逃避追求幸福嘛？</li>
+</ul>
+<h2 id="20200207"><a href="#20200207" class="headerlink" title="20200207"></a>20200207</h2><ul>
+<li>MSCRED里面提供了一个构建数据集的方法</li>
+<li>AE的优化方案：deep、change to VAE    </li>
+<li>将多元高斯分布以及重构联合起来？</li>
+<li>DEEP AUTOENCODING GAUSSIAN MIXTURE MODEL FOR UNSUPERVISED ANOMALY DETECTION 中提到了ODDS数据集</li>
+<li>稀疏表示又叫字典学习？</li>
+</ul>
+<h2 id="20200208"><a href="#20200208" class="headerlink" title="20200208"></a>20200208</h2><ul>
+<li>LSTM-VAE-GAN？草死了这个题目，一看就是灌水</li>
+<li><p>DOPING: Generative Data Augmentation for Unsupervised Anomaly Detection with GAN</p>
+<ul>
+<li>切入点：用GAN来过采样极少出现的正样本，来降低FP（启发点：GAN不仅可以用来替代VAE，也可以利用GAN的特点在其他方面做事）</li>
+<li>不一定非得无监督，重构的方法也可以有异常数据，只不过修改一下loss，让异常数据的reconstruction loss变大（这个应该很容易做到）</li>
+<li><p>AAE是个什么东西</p>
+<blockquote>
+<p>在隐层hidden layer中引入了对抗的思想来优化隐层的z，判别器discriminator 需要在隐层 判断采样后的真实数据和生成器encoder所产生的假数据。因此discriminator的目的就是使得q(z | x) 不断向p(z)靠近</p>
+</blockquote>
+</li>
+<li>iforest是什么神奇的异常检测算法</li>
+</ul>
+</li>
+<li><p>Sequential VAE-LSTM for Anomaly Detection on Time Series </p>
+<ul>
+<li>切入点：VAE不是个时序模型；把异常检测和趋势预测一块儿做了；LSTM接在VAE后面，这样不好吧（这样真的能boost VAE的performance嘛，相当于多加了一个任务，有点Bert的预训练任务的味道）</li>
+<li>（可不可以用Kitsune提取的二维特征做二维重构，能否在可解释性上做出点贡献）    </li>
+<li>（有些算法要先做归一化，可是有些场景并不知道范围所以没法归一化（例如streaming data））</li>
+<li>（VAE可以起到一个去噪声的作用？这个世泽师兄也是这么说的）</li>
+</ul>
+</li>
+<li><p>新数据集：KPI（AIOPS2017提供的数据集）、以及AIOPS2018提供的数据集</p>
+</li>
+<li>MDGAN: Boosting Anomaly Detection Using Multi-Discriminator Generative Adversarial Networks<ul>
+<li>想看看怎么boost的</li>
+<li>这第二个根本不像discriminator啊，他并不是区分的作用，所以怎么boost的呢（感觉没有理论说明，实际上并不太对）</li>
+<li>草，看错了，原来还有一篇文章叫MAD-GAN，想看的是那个来着</li>
+<li>我觉得这篇的思想不太对，但是能不能获得其他启发呢？</li>
+</ul>
+</li>
+</ul>
+<h2 id="20200209"><a href="#20200209" class="headerlink" title="20200209"></a>20200209</h2><ul>
+<li>（有一个问题，要是用这些方法去做流量异常检测，还能提升么，钟莹师兄的方法F1-Score都99.几了）</li>
+<li>Anomaly Detection with Generative Adversarial Networks for Multivariate Time Series<ul>
+<li>用GAN做的话一部分是是否能采样出这个sample，一部分是discrimnator是否能区分出</li>
+<li>多维</li>
+<li>说实话没懂这个LSTM-RNN用来干嘛了（还是只是用在这个窗口内来generate数据的时候看一下前面的？）</li>
+<li>（这个SWaT数据集注入了不少网络攻击）</li>
+<li>MMD可以用来衡量GAN学这个分布学的怎么样了？</li>
+<li>MAD-GAN就不看了，看起来和这篇文章一样</li>
+<li>还是没有想法啊QAQ_(:з」∠)_ 去看看那个多模态分布的论文哇</li>
+</ul>
+</li>
+<li>Anomaly Detection With Multiple-Hypotheses Predictions<ul>
+<li>怎么稀里糊涂的根本不知道讲了啥</li>
+<li>它举的这个例子能否迁移到时间序列数据或者流量异常检测上呢</li>
+<li>VAE确实重构的是偏模糊的，因为它用的均方误差（但是这样不是正好能把噪声去了么）</li>
+<li>所以一个解释就是对于多模态分布来说，多头的VAE其实是每个去拟合了一簇？那么GAN不应该也可以做的更好？</li>
+</ul>
+</li>
+</ul>
+<h2 id="20200210"><a href="#20200210" class="headerlink" title="20200210"></a>20200210</h2><ul>
+<li>hhh<ul>
+<li>继续回来看这个</li>
+<li>那么本身VAE就是无数个高斯分布模型放在一起了，为什么还有multi-head呢，我不太明白</li>
+<li>而且当假设数=1的时候就是VAE-GAN，这么厉害么，但是要做的话我觉得首先还是要证明流量/KPI中存在多假设的问题</li>
+</ul>
+</li>
+<li>Learning in an Uncertain World- Representing Ambiguity Through Multiple Hypotheses<ul>
+<li>多假设相当于回归和分类的结合？每个类别是一个回归的结果</li>
+<li>voronoi拆分还行</li>
+<li>meta loss是什么意思</li>
+</ul>
+</li>
+<li>DEEP AUTOENCODING GAUSSIAN MIXTURE MODEL FOR UNSUPERVISED ANOMALY DETECTION<ul>
+<li>再看这篇文章</li>
+<li>为什么第一步要用autoencoder来做呢？直接encoder完了之后输入到gauss模型里不行么</li>
+<li>这里面的意思说的是  重构based的方法 异常有两个方面：一个是重构误差比较大，另一个是reduced之后的code与正常的可能区别比较大（这样对么，是不是和训练的时候的方式有关系？训练的时候还是只能包含正常数据）</li>
+<li>有没有其他的分布或者传统模型可以用一个VAE来学习它的参数</li>
+<li>能不能提出一个方法能够在有异常的训练数据上train？</li>
+<li>其实钟莹师兄的那个AE后面接LSTM的是不是就能起到互相boost的作用</li>
+<li>GMM的求解算法EM感觉和K-MEANS差不多</li>
+<li>这个estimation-network其实相当于估计它属于哪个分布</li>
+<li>然后有个sample energy的东西表示它被观察到的概率，如果是异常的话，就不符合这个分布</li>
+</ul>
+</li>
+<li>Learning Representations from Healthcare Time Series Data for Unsupervised Anomaly Detection<ul>
+<li>BiLSTM Based VAE  + z-space上的detection （SVM或者聚类）</li>
+<li>怎么数据集用了2005年的ECG</li>
+</ul>
+</li>
+<li>Memorizing Normality to Detect Anomaly: Memory-augmented Deep Autoencoder for Unsupervised Anomaly Detection<ul>
+<li>记忆增强？ </li>
+<li>就是在zong的基础上对autoencoder进行改进，他不是说有的异常rl也小么，所以就想提出一种方法来让异常的rl变大（为啥我想不出来呢）</li>
+</ul>
+</li>
+</ul>
+<h2 id="20200211"><a href="#20200211" class="headerlink" title="20200211"></a>20200211</h2><ul>
+<li>Deep Structured Energy Based Models for Anomaly Detection<ul>
+<li>有点不明所以……</li>
+</ul>
+</li>
+<li>Data Augmentation by AutoEncoders for Unsupervised Anomaly Detection<ul>
+<li>AE也能用来做数据增强？</li>
+<li>能不能让记忆增强的AE工作在有异常的数据上，但因为这个比例较少，所以影响不大</li>
+<li>train的时候把最后几个epoch的latent拿出来？？？？？？</li>
+<li>卧槽666666啊  原来的SMOTE之类的都是这样，这里直接通过拿最后几次train的中间结果作为了新的正常数据的sample</li>
+</ul>
+</li>
+<li><p>Deep Autoencoders with Value-at-Risk Thresholding for Unsupervised Anomaly Detection</p>
+<ul>
+<li>这个VaR好像是王老师给我看的第一篇论文里提到的概念？</li>
+<li>不看了。。。好像里的有点远</li>
+</ul>
+</li>
+<li><p>Robust Anomaly Detection for Multivariate Time Series through Stochastic Recurrent Neural Network</p>
+<ul>
+<li>这个server machine和我们的场景有点像</li>
+<li>检测的目标是entity-level的</li>
+<li>ServerMachineDataset 提供了一个数据集<a href="https://github.com/NetManAIOps/OmniAnomaly" target="_blank" rel="noopener">https://github.com/NetManAIOps/OmniAnomaly</a></li>
+<li>也有两个公开的多元时间序列数据集：SMAP和MSL</li>
+<li>有这样一个想法：直接把LSTM的结果当成VAE的condition如何？</li>
+<li>另一个想法：如何将DAGMM/DEEP SVDD与时间序列模型更好的结合起来（光是LSTM-Based是不太行的）</li>
+<li>再有一个想法：将概率模型替换为多假设，前面要加一个时间序列依赖</li>
+<li>GRU和LSTM性能相当，但是参数比较少，也比较好train</li>
+<li>再再有一个想法：如何获得好的representation，那么我们让这个表示去预测下一个值</li>
+<li>主要是GRU和VAE联合起来，用的其他一些小trick不太看得懂</li>
+</ul>
+</li>
+<li>Deep One-Class Classification<ul>
+<li>最小化包围数据网络表示的超球体的体积</li>
+<li>这个object function倒是很容易理解</li>
+<li>再来一个想法：能否证明SVDD存在问题并解决（比方说normal的为什么集中在中间，要是异常的也到了中间怎么办）</li>
+<li>能不能deep k-means？</li>
+<li>这个c是超参数，不是模型学的呀（对）</li>
+<li>而且这个前馈神经网络不能有bias term</li>
+<li>为什么这样一篇文章能上ICML</li>
+</ul>
+</li>
+<li>Anomaly Detection in Streams with Extreme Value Theory<ul>
+<li>数学理论太多了…有点看不下去</li>
+</ul>
+</li>
+</ul>
+<h2 id="20200212"><a href="#20200212" class="headerlink" title="20200212"></a>20200212</h2><ul>
+<li>今天是紧张准备讨论的一天</li>
+</ul>
+<h2 id="20200213"><a href="#20200213" class="headerlink" title="20200213"></a>20200213</h2><ul>
+<li>今天是放纵的一天以及与qz开心地玩游戏的一天，可惜没能说出情人节快乐🤦‍♀️</li>
+</ul>
+<h2 id="20200214"><a href="#20200214" class="headerlink" title="20200214"></a>20200214</h2><ul>
+<li>今天是没有和qz玩游戏的一天[哭泣]，怕人家嫌我烦_(:з」∠)_，还是找人家的频率不要那么高比较好[卑微]</li>
+<li>看到她给myx的pyq点赞吓了我一跳，看了好几遍反复确认视频里的人不是她</li>
 </ul>
 
           
